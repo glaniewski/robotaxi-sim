@@ -27,6 +27,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 FLOOR_DIR = ROOT / "data" / "blog_battery_floor"
+EQP_DIR = ROOT / "data" / "blog_battery_floor_equal_power"
 ANCHOR_DIR = ROOT / "data" / "blog_anchor_replicates"
 EXPERIMENTS_JSON = ROOT / "site" / "src" / "content" / "experiments.json"
 
@@ -49,17 +50,21 @@ METRIC_KEYS = [
 ]
 
 
-def _load_floor_files(label_prefix: str) -> list[dict]:
+def _load_files(directory: Path, label_prefix: str) -> list[dict]:
     """Load all seed files for configs starting with label_prefix."""
     records = []
-    if not FLOOR_DIR.exists():
+    if not directory.exists():
         return records
-    for f in sorted(FLOOR_DIR.glob(f"{label_prefix}*_seed*.json")):
+    for f in sorted(directory.glob(f"{label_prefix}*_seed*.json")):
         try:
             records.append(json.loads(f.read_text()))
         except Exception as e:
             print(f"  WARN skip {f.name}: {e}")
     return records
+
+
+def _load_floor_files(label_prefix: str) -> list[dict]:
+    return _load_files(FLOOR_DIR, label_prefix)
 
 
 def _build_series(label: str, battery_kwh: float, n_sites: int,
@@ -145,24 +150,62 @@ def main() -> None:
 
     n2_series.sort(key=lambda x: x["battery_kwh"])
 
+    # ---- Equal-power N=77 series (12.32 MW @ 8p × 20 kW) ------------------
+    # Baseline 75 kWh from geo sweep; sweep from new equal-power dir
+    n77_eqp_75 = _baseline_from_anchor("geo_N77_8p20kW", 75.0, 77, 8, 20.0)
+    n77_eqp_series: list[dict] = []
+    if n77_eqp_75:
+        n77_eqp_series.append(n77_eqp_75)
+
+    for label, bat in [
+        ("eqp_bat77_40kWh", 40.0),
+        ("eqp_bat77_30kWh", 30.0),
+        ("eqp_bat77_20kWh", 20.0),
+        ("eqp_bat77_15kWh", 15.0),
+        ("eqp_bat77_10kWh", 10.0),
+    ]:
+        recs = _load_files(EQP_DIR, label)
+        if recs:
+            n77_eqp_series.append(_build_series(label, bat, 77, 8, 20.0, recs))
+        else:
+            print(f"  MISSING (eqp): {label}")
+    n77_eqp_series.sort(key=lambda x: x["battery_kwh"])
+
+    # ---- Equal-power N=2 series (12.32 MW @ 308p × 20 kW) -----------------
+    # 75-15 kWh already exist in original FLOOR_DIR (same N=2 config); add 10 kWh from EQP_DIR
+    n2_eqp_series = list(n2_series)  # reuse — same architecture, already at 12.3 MW
+    eqp_bat2_10 = _load_files(EQP_DIR, "eqp_bat2_10kWh")
+    if eqp_bat2_10:
+        n2_eqp_series.append(_build_series("eqp_bat2_10kWh", 10.0, 2, 308, 20.0, eqp_bat2_10))
+    n2_eqp_series.sort(key=lambda x: x["battery_kwh"])
+
     # ---- Merge and save ----------------------------------------------------
-    exp["battery_floor"] = {"n77": n77_series, "n2": n2_series}
+    exp["battery_floor"] = {
+        "n77": n77_series,
+        "n2": n2_series,
+        # Equalized at ~12.3 MW total power across both architectures
+        # (N=77 at 8p × 20 kW; N=2 at 308p × 20 kW)
+        "n77_equal_power": n77_eqp_series,
+        "n2_equal_power": n2_eqp_series,
+    }
     EXPERIMENTS_JSON.write_text(json.dumps(exp, indent=2, default=str))
     print(f"Updated {EXPERIMENTS_JSON}")
 
-    print("\n=== N=77 summary ===")
-    for row in n77_series:
-        sla = row.get("sla_adherence_pct", {}).get("mean")
-        soc = row.get("fleet_battery_pct", {}).get("mean")
-        seeds = row.get("seeds", [])
-        print(f"  {row['battery_kwh']:5.0f} kWh | sla={sla:.1f}% | fleet_soc={soc:.1f}% | seeds={seeds}")
+    def _summary(label: str, series: list[dict]) -> None:
+        print(f"\n=== {label} ===")
+        for row in series:
+            sla = row.get("sla_adherence_pct", {}).get("mean")
+            soc = row.get("fleet_battery_pct", {}).get("mean")
+            seeds = row.get("seeds", [])
+            print(
+                f"  {row['battery_kwh']:5.0f} kWh | sla={sla:.2f}% | "
+                f"fleet_soc={soc:.1f}% | seeds={seeds}"
+            )
 
-    print("\n=== N=2 summary ===")
-    for row in n2_series:
-        sla = row.get("sla_adherence_pct", {}).get("mean")
-        soc = row.get("fleet_battery_pct", {}).get("mean")
-        seeds = row.get("seeds", [])
-        print(f"  {row['battery_kwh']:5.0f} kWh | sla={sla:.1f}% | fleet_soc={soc:.1f}% | seeds={seeds}")
+    _summary("N=77 (original 8.86 MW, 10p × 11.5 kW)", n77_series)
+    _summary("N=2  (original 12.3 MW, 308p × 20 kW)", n2_series)
+    _summary("N=77 equalized (12.3 MW, 8p × 20 kW)", n77_eqp_series)
+    _summary("N=2  equalized (12.3 MW, 308p × 20 kW + new 10 kWh)", n2_eqp_series)
 
 
 if __name__ == "__main__":

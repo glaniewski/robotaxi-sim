@@ -92,25 +92,49 @@ Note: utilization above 100% is a measurement artifact from counting planned
 charging sessions that begin near the simulation horizon and extend beyond it.
 Served demand is unaffected.
 
-## 4. Battery Floor Depends On Depot Density
+## 4. Depot Geometry Sets A Service Ceiling
 
 Question: how small can the vehicle battery get before service quality breaks?
 
-Setup: 4,500 vehicles, 10 plugs per site, 11.5 kW per plug, battery capacity
-swept from 75 kWh down to 15 kWh under two depot geographies.
+Setup: 4,500 vehicles, total installed charging power held constant at
+~12.32 MW across both architectures, battery capacity swept from 75 kWh down
+to 10 kWh.
 
-| Battery size | Distributed network: 77 depots | Centralized network: 2 depots |
+- N=77 distributed: 8 plugs × 20 kW per microsite (12.32 MW total)
+- N=2 centralized: 308 plugs × 20 kW per mega-depot (12.32 MW total)
+
+| Battery size | Distributed (N=77) | Centralized (N=2) |
 |---:|---:|---:|
-| 75 kWh | ~95.8% served | ~93.9% served |
-| 40 kWh | ~95.2% served | ~93.9% served |
-| 30 kWh | ~93.6% served | ~93.9% served |
-| 15 kWh | ~89.5% served | ~93.9% served |
+| 75 kWh | 95.1% | 93.9% |
+| 40 kWh | 95.1% | 93.9% |
+| 30 kWh | 95.1% | 93.9% |
+| 20 kWh | 95.1% | 93.9% |
+| 15 kWh | 95.0% | 93.9% |
+| 10 kWh | 94.8% | 93.5% |
 
-Finding: in the distributed network, 40 kWh is a practical floor with less than
-one point of service impact relative to 75 kWh. Below 30 kWh, charging
-interruptions start to compete with dispatch. In the centralized network,
-battery size appears irrelevant because depot travel time, not pack size, is
-already the binding constraint.
+Finding: at equal charger power, battery size is essentially irrelevant within
+the 10–75 kWh range. The ~1-point gap between architectures is the geometric
+premium of distribution, not a battery effect — centralized depots park the
+fleet farther from the demand distribution, capping achievable service quality
+regardless of pack size.
+
+A separate sweep at 11.5 kW Level 2 chargers (8.86 MW total power) shows that
+the apparent "battery floor" in the original setup was a charger-power
+artifact, not depot geometry: at slow charger speeds the N=77 network falls
+from 95.8% at 75 kWh to 89.5% at 15 kWh because the slow plugs cannot
+replenish a small battery faster than the fleet draws power.
+
+| Battery | N=77 fast (20 kW, 12.3 MW) | N=77 Level 2 (11.5 kW, 8.9 MW) |
+|---:|---:|---:|
+| 75 kWh | 95.1% | 95.8% |
+| 40 kWh | 95.1% | 95.2% |
+| 30 kWh | 95.1% | 93.6% |
+| 20 kWh | 95.1% | 91.3% |
+| 15 kWh | 95.0% | 89.5% |
+
+The procurement implication: pack size and charger spec must be sized
+together. The architecture sets the achievable ceiling; the charger–battery
+match determines whether you reach it.
 
 ## 5. Congestion Is The Biggest Missing Realism Layer
 
@@ -133,8 +157,8 @@ optimization problem as much as a dispatch problem. In this model:
   than volume.
 - Charger geography matters more than raw charger count.
 - Plug concurrency can matter more than charger speed at fixed power.
-- Battery capacity only matters after depot geometry is good enough for battery
-  limits to become visible.
+- Depot geometry sets a service ceiling that more battery cannot overcome;
+  battery size and charger spec are a coupled procurement decision.
 - Congestion can dominate all of the above by reducing fleet throughput.
 
 The simulator is intentionally transparent: assumptions, routing, dispatch,

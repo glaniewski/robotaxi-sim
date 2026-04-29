@@ -5,7 +5,7 @@ subtitle: "An Austin Robotaxi Simulator — discrete-event fleet modeling and in
 author: "Gabriel Laniewski"
 date: "April 2026"
 readingTimeMinutes: 9
-description: "Four counterintuitive findings from an Austin Robotaxi Simulator: fleet sizing has a sharp knee, charger placement beats charger count, slow chargers win, and battery floor depends entirely on depot density."
+description: "Four counterintuitive findings from an Austin Robotaxi Simulator: fleet sizing has a sharp knee, charger placement beats charger count, slow chargers win, and depot geometry sets a service ceiling that battery size doesn't overcome."
 ---
 
 import Figure from "../../components/Figure.astro";
@@ -34,7 +34,8 @@ repositioning, and charging at configurable depot sites.<sup><a href="#method-no
 
 Four findings held up consistently across configurations: fleet sizing has a sharp
 knee, charger placement matters more than charger count, plug availability matters
-more than charger speed, and battery requirements are driven by depot density.
+more than charger speed, and depot geometry sets a service ceiling that more
+battery doesn't overcome.
 
 <Figure
   caption="Animated overview: 3-day run, fleet=4500, N=77 microsites, demand_scale=0.2. 95.8% served. 10 plugs × 11.5 kW per site. ~300 sampled vehicles."
@@ -93,7 +94,9 @@ cost to go further? (Served% is the fraction of incoming trip requests that are
 matched to a vehicle and completed — requests that time out or find no eligible
 car within the max wait radius count as unserved.)
 
-<FleetSweepCurve client:only="react" mode="service" height={340} />
+<Figure caption="Served demand and per-vehicle productivity across fleet sizes. Charger network held fixed at 77 microsites × 10 plugs × 11.5 kW; mean of 3 random seeds per point.">
+  <FleetSweepCurve client:only="react" mode="service" height={340} />
+</Figure>
 
 <Callout tone="takeaway">
   **Doubling the fleet from 1,500 to 3,000 lifts served demand from 63% to 90% —
@@ -116,7 +119,9 @@ vehicle is doing anything (in trip, deadheading, repositioning, or charging) rat
 than sitting idle. It falls as the fleet grows past the knee, confirming that
 vehicles are simply waiting longer between dispatches above the 95% threshold.
 
-<FleetEconomicsCurve client:only="react" height={320} />
+<Figure caption="Daily contribution per vehicle (left axis) and total system contribution (right axis) across fleet sizes. Both include vehicle depreciation, insurance, teleops, and cleaning.">
+  <FleetEconomicsCurve client:only="react" height={320} />
+</Figure>
 
 The blue line is per-vehicle daily contribution — gross revenue minus all
 operating costs, including depreciation, insurance, teleops, and cleaning.
@@ -131,7 +136,9 @@ charger locations, depot placement, or a revised coverage boundary. The knee
 location is specific to the charger configuration tested here: 77 sites, 10 plugs
 each at 11.5 kW. A denser or sparser charger network would shift it.
 
-<FleetSweepCurve client:only="react" mode="wait" height={300} />
+<Figure caption="Median (p50) and p90 pickup wait times across fleet sizes. The shaded band marks the 10-minute service threshold used in the SLA.">
+  <FleetSweepCurve client:only="react" mode="wait" height={300} />
+</Figure>
 
 The wait-time chart shows the same pattern from a different angle. Median wait
 stabilizes around 3 minutes well before the fleet saturates. What stays elevated
@@ -214,7 +221,9 @@ is split between plug count and per-plug speed — from 1 plug at 115 kW per
 site all the way to 20 plugs at 5.75 kW each. Fleet size, depot geography,
 battery, and demand are all held fixed.
 
-<ChargerPlugSweep client:only="react" height={360} />
+<Figure caption="Iso-power sweep: total installed power held fixed at ~8.9 MW across 77 sites while the split between plug count and per-plug speed varies. Error bars span the min/max of 3 seeds per configuration.">
+  <ChargerPlugSweep client:only="react" height={360} />
+</Figure>
 
 <Callout tone="takeaway">
   **The curve peaks at 4 plugs per site (96.1% served), then declines gradually
@@ -291,67 +300,67 @@ the charger tier first.
 
 ## 4. How small can the battery get?
 
-Battery procurement is coupled to the depot placement decision. I tested battery
-capacities from 75 kWh down to 15 kWh for both the distributed depot network
-(N=77) and the centralized network (N=2), with fleet and charger configs held
-constant.
+Battery procurement and depot architecture are coupled. To isolate that
+coupling, I held total installed power constant at ~12.3 MW across both
+networks and swept battery capacity from 75 kWh down to 10 kWh:
 
-<BatteryFloorChart client:only="react" height={340} />
+- N=77 distributed: 8 plugs × 20 kW per microsite (12.32 MW total)
+- N=2 centralized: 308 plugs × 20 kW per mega-depot (12.32 MW total)
+
+The two arms differ only in depot count and per-site plug count. Charger speed
+and total installed power are matched, so any service difference between arms
+is depot geometry — not power budget.
+
+<Figure caption="Served demand vs. battery capacity at equalized 12.3 MW total installed power across both networks. The N=77 arm uses 8 plugs × 20 kW per site; the N=2 arm uses 308 plugs × 20 kW per site.">
+  <BatteryFloorChart client:only="react" height={340} />
+</Figure>
 
 <Callout tone="takeaway">
-  **For the distributed network (77 depots), served% holds at ~95% down to 40 kWh,
-  then drops ~2 points per step below that. For the centralized network (2
-  mega-depots), served% is completely flat at 93.9% regardless of battery size —
-  from 75 kWh all the way down to 15 kWh.**
+  **Depot geometry caps the achievable service ceiling (~95% distributed vs.
+  ~94% centralized); within an architecture, battery size barely matters as
+  long as charger power matches it.** N=77 holds at ~95% served from 10 kWh to
+  75 kWh; N=2 holds at ~93.9% served from 15 kWh to 75 kWh, slipping ~0.4
+  points only at 10 kWh. The ~1-point gap between networks is the geometric
+  premium of distribution — a ceiling no amount of battery overcomes.
 </Callout>
 
-The two networks tell different stories about why battery size does or doesn't matter.
+The two architectures absorb a smaller battery in different ways. In
+**N=77**, vehicles charge close to wherever they are: ~11 sessions per
+vehicle per day, ~17 minutes each, both flat across battery sizes. Fast 20 kW
+plugs at distributed microsites replenish a 10 kWh pack faster than the fleet
+draws power. In **N=2**, vehicles charge less often (~7.9 sessions per day)
+but at depots with 308 plugs each, easily absorbing the higher concurrent
+demand from a smaller-battery fleet. Either way, the charger network has
+enough headroom that smaller batteries just shift the cadence of charging
+stops without breaking the SLA-meeting envelope.
 
-**Distributed network (N=77):** vehicles are always close to a plug, so a smaller
-battery just means more frequent short charging stops. Sessions per vehicle per
-day rise from 11.4 at 75 kWh to 14.7 at 15 kWh — a 29% increase in charging
-interruptions. At 40 kWh the extra frequency is manageable: served% stays at 95.2%,
-within a rounding error of the 75 kWh baseline (95.8%). Below 30 kWh, charging
-interruptions start competing directly with dispatch — vehicles need to divert
-for charging at exactly the moments they would otherwise pick up a rider. Served%
-slides to 93.6% at 30 kWh and 89.5% at 15 kWh.
+The persistent 1-point gap is geometry. Centralized depots park the fleet
+farther from the spatially-distributed demand, so deadhead-to-pickup is
+consistently larger and a small fraction of trips can't be reached within the
+SLA wait window. Adding more battery doesn't move the depots.
 
-**Centralized network (N=2):** battery size is completely irrelevant. Across
-all five battery sizes tested, served% holds at 93.9% and charging sessions
-average **~7.87 per vehicle per day** — nearly identical regardless of pack
-size. Under JIT charging, vehicles only head to a depot when their
-state-of-charge falls below a trigger threshold — they don't stop
-opportunistically when passing by. With only 2 depot locations, that triggered
-trip is long enough that the cost of making it sets the charging cadence, not
-the size of the battery. A smaller pack drains to the trigger sooner, but the
-vehicle still has to make the same expensive depot trip — and the fleet's
-dispatch cycle shapes when that trip fits. The depot geography imposes the
-charging rhythm; battery size can't override it.
+**Battery and charger are a coupled procurement decision.** Drop charger speed
+and the same N=77 network breaks down. At 11.5 kW Level 2 chargers
+(8.86 MW total power), the slow plugs can't keep up when batteries are small —
+N=77 falls from 95.8% at 75 kWh to 89.5% at 15 kWh:
 
-Both effects are grounded in the same energy accounting. At 0.20 kWh/mi,
-vehicles in the distributed network consume about **~58 kWh per vehicle per
-day (~290 miles of driving)**, and vehicles in the centralized network consume
-about **51.8 kWh (~259 miles)**. These per-vehicle daily energy figures hold
-within ±0.5 kWh regardless of battery pack size — because daily energy
-consumption is determined by how far each vehicle drives (trip miles plus
-deadhead), and that doesn't change with battery chemistry. What battery capacity
-changes is how many charging stops it takes to cover that same daily distance.
+| Battery | N=77 fast (20 kW, 12.3 MW) | N=77 Level 2 (11.5 kW, 8.9 MW) |
+|---:|---:|---:|
+| 75 kWh | 95.1% | 95.8% |
+| 40 kWh | 95.1% | 95.2% |
+| 30 kWh | 95.1% | 93.6% |
+| 20 kWh | 95.1% | 91.3% |
+| 15 kWh | 95.0% | 89.5% |
 
-The practical implication cuts both ways. In the **centralized network (N=2)**,
-you can procure vehicles with 15 kWh batteries and take no served% penalty at all —
-but only because the depot geometry is already the binding constraint. You're
-not gaining flexibility; you're operating below the level where battery matters.
-In the **distributed network (N=77)**, battery capacity does affect service
-quality, but there's a well-defined floor: 40 kWh holds served% within 1 point of
-the 75 kWh baseline. Going below 30 kWh starts costing real service quality.
-In both cases, smaller batteries are viable — the reason and the risk are just
-different. With 77 dispersed depots, reducing pack size from 75 kWh to 40 kWh
-saves ~$3,500 per vehicle with less than 1 point of service impact. The same
-capital could fund roughly 600 additional vehicles and recover most of that gap
-— making a smaller battery + larger fleet a roughly cost-neutral alternative to
-a larger battery + smaller fleet. In a sparse depot network — where recharging trips are expensive — that logic
-inverts: a larger battery earns its cost by keeping vehicles on the road longer
-between depot visits.
+A 15 kWh battery is fine on a 20 kW charger network and bad on a Level 2
+network. Pack size and charger spec must be sized together — the architecture
+sets the achievable ceiling, but the charger-battery match determines whether
+you actually hit it.
+
+The cost implication is real. At a typical $100/kWh, dropping from 75 kWh to
+20 kWh saves ~$5,500 per vehicle. For a 4,500-vehicle fleet, that's ~$25M in
+capex — enough to fund ~700 additional vehicles or several additional
+fast-charging sites. As long as the charger spec keeps up.
 
 ## What I'd build next
 
@@ -360,7 +369,9 @@ Real congestion is probably the variable these results are most sensitive to,
 and the one the simulator doesn't yet model. Even the naive version — a uniform
 travel-time multiplier — shows how large that gap is:
 
-<CongestionCapacityTax client:only="react" height={320} />
+<Figure caption="Sensitivity of served demand to a uniform travel-time multiplier applied to all OSRM routes, simulating ambient congestion at fixed fleet and infrastructure.">
+  <CongestionCapacityTax client:only="react" height={320} />
+</Figure>
 
 <Callout tone="takeaway">
   Every 50% rise in ambient travel time costs roughly 10 percentage points of
@@ -386,6 +397,3 @@ demand proximity and infrastructure feasibility. The N=2 result hints at why
 this matters: centralized high-power sites may be infeasible to permit where
 the demand is densest.
 
-The simulator code and curated experiment notes are available on
-[GitHub](https://github.com/glaniewski/robotaxi-sim). Reach out via the contact
-page if you want to discuss the methodology.

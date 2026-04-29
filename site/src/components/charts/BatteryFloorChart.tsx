@@ -31,7 +31,12 @@ type ChartRow = {
 
 export default function BatteryFloorChart({ height = 320 }: { height?: number }) {
   const bf = (experiments as any).battery_floor as
-    | { n77: SeriesRow[]; n2: SeriesRow[] }
+    | {
+        n77: SeriesRow[];
+        n2: SeriesRow[];
+        n77_equal_power?: SeriesRow[];
+        n2_equal_power?: SeriesRow[];
+      }
     | undefined;
 
   if (!bf) {
@@ -45,13 +50,17 @@ export default function BatteryFloorChart({ height = 320 }: { height?: number })
     );
   }
 
-  // Build a unified keyed map by kWh
+  // Prefer the power-equalized series (12.3 MW for both architectures) so the
+  // comparison isolates depot geometry from charger speed/total power.
+  const n77Series = bf.n77_equal_power ?? bf.n77;
+  const n2Series = bf.n2_equal_power ?? bf.n2;
+
   const allKwh = Array.from(
-    new Set([...bf.n77.map((r) => r.battery_kwh), ...bf.n2.map((r) => r.battery_kwh)])
+    new Set([...n77Series.map((r) => r.battery_kwh), ...n2Series.map((r) => r.battery_kwh)])
   ).sort((a, b) => a - b);
 
-  const n77Map = Object.fromEntries(bf.n77.map((r) => [r.battery_kwh, r]));
-  const n2Map = Object.fromEntries(bf.n2.map((r) => [r.battery_kwh, r]));
+  const n77Map = Object.fromEntries(n77Series.map((r) => [r.battery_kwh, r]));
+  const n2Map = Object.fromEntries(n2Series.map((r) => [r.battery_kwh, r]));
 
   const rows: ChartRow[] = allKwh.map((kwh) => {
     const a = n77Map[kwh];
@@ -68,7 +77,7 @@ export default function BatteryFloorChart({ height = 320 }: { height?: number })
     };
   });
 
-  const yMin = 85;
+  const yMin = 90;
   const yMax = 100;
 
   return (
