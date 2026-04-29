@@ -1,0 +1,5014 @@
+{
+  "meta": {
+    "generated_at": "2026-04-29T05:05:40.862172+00:00",
+    "fleet_sweep": {
+      "n_cells": 39,
+      "fleets": [
+        500,
+        1000,
+        1500,
+        2000,
+        2500,
+        3000,
+        3500,
+        4000,
+        4250,
+        4500,
+        4750,
+        5000,
+        5500
+      ],
+      "seeds": [
+        7,
+        42,
+        123
+      ]
+    },
+    "anchors": {
+      "n_cells": 24,
+      "labels": [
+        "battery_small_N77_10p11kW_bat40",
+        "charger_fast_N50_10p75kW",
+        "charger_matched_N77_2p57kW",
+        "charger_slow_N77_10p11kW",
+        "geo_N20_31p20kW",
+        "geo_N2_308p20kW",
+        "geo_N5_124p20kW",
+        "geo_N77_8p20kW"
+      ],
+      "seeds": [
+        7,
+        42,
+        123,
+        314
+      ]
+    },
+    "pareto": {
+      "n_cells": 20,
+      "presets": [
+        "tesla",
+        "waymo"
+      ]
+    }
+  },
+  "fleet_sweep": {
+    "points": [
+      {
+        "fleet": 500,
+        "seeds": [
+          7,
+          42,
+          123
+        ],
+        "served_pct": {
+          "mean": 23.4867,
+          "min": 22.97,
+          "max": 24.02,
+          "values": [
+            23.47,
+            24.02,
+            22.97
+          ]
+        },
+        "sla_adherence_pct": {
+          "mean": 23.4867,
+          "min": 22.97,
+          "max": 24.02,
+          "values": [
+            23.47,
+            24.02,
+            22.97
+          ]
+        },
+        "p10_wait_min": {
+          "mean": 0.1387,
+          "min": 0.137,
+          "max": 0.142,
+          "values": [
+            0.142,
+            0.137,
+            0.137
+          ]
+        },
+        "median_wait_min": {
+          "mean": 2.8273,
+          "min": 2.795,
+          "max": 2.862,
+          "values": [
+            2.862,
+            2.795,
+            2.825
+          ]
+        },
+        "p90_wait_min": {
+          "mean": 8.6337,
+          "min": 8.616,
+          "max": 8.663,
+          "values": [
+            8.663,
+            8.616,
+            8.622
+          ]
+        },
+        "cost_per_trip": {
+          "mean": 0.8315,
+          "min": 0.8178,
+          "max": 0.8447,
+          "values": [
+            0.8321,
+            0.8178,
+            0.8447
+          ]
+        },
+        "contribution_margin_per_trip": {
+          "mean": 12.9793,
+          "min": 12.9634,
+          "max": 12.9886,
+          "values": [
+            12.9886,
+            12.9634,
+            12.986
+          ]
+        },
+        "utilization_pct": {
+          "mean": 91.0333,
+          "min": 91.0,
+          "max": 91.1,
+          "values": [
+            91.0,
+            91.0,
+            91.1
+          ]
+        },
+        "active_time_pct": {
+          "mean": 81.2667,
+          "min": 79.57,
+          "max": 82.97,
+          "values": [
+            81.26,
+            82.97,
+            79.57
+          ]
+        },
+        "deadhead_pct": {
+          "mean": 8.9667,
+          "min": 8.9,
+          "max": 9.0,
+          "values": [
+            9.0,
+            9.0,
+            8.9
+          ]
+        },
+        "charger_utilization_pct": {
+          "mean": 21.1733,
+          "min": 20.75,
+          "max": 21.75,
+          "values": [
+            21.02,
+            21.75,
+            20.75
+          ]
+        },
+        "fleet_battery_pct": {
+          "mean": 47.5933,
+          "min": 45.81,
+          "max": 48.82,
+          "values": [
+            45.81,
+            48.82,
+            48.15
+          ]
+        },
+        "trips_per_vehicle_per_day": {
+          "mean": 81.52,
+          "min": 79.74,
+          "max": 83.36,
+          "values": [
+            81.46,
+            83.36,
+            79.74
+          ]
+        }
+      },
+      {
+        "fleet": 1000,
+        "seeds": [
+          7,
+          42,
+          123
+        ],
+        "served_pct": {
+          "mean": 43.1733,
+          "min": 42.46,
+          "max": 44.12,
+          "values": [
+            42.94,
+            44.12,
+            42.46
+          ]
+        },
+        "sla_adherence_pct": {
+          "mean": 43.1733,
+          "min": 42.46,
+          "max": 44.12,
+          "values": [
+            42.94,
+            44.12,
+            42.46
+          ]
+        },
+        "p10_wait_min": {
+          "mean": 0.0537,
+          "min": 0.053,
+          "max": 0.054,
+          "values": [
+            0.053,
+            0.054,
+            0.054
+          ]
+        },
+        "median_wait_min": {
+          "mean": 2.204,
+          "min": 2.187,
+          "max": 2.233,
+          "values": [
+            2.233,
+            2.187,
+            2.192
+          ]
+        },
+        "p90_wait_min": {
+          "mean": 8.441,
+          "min": 8.43,
+          "max": 8.455,
+          "values": [
+            8.455,
+            8.43,
+            8.438
+          ]
+        },
+        "cost_per_trip": {
+          "mean": 0.7683,
+          "min": 0.7573,
+          "max": 0.7765,
+          "values": [
+            0.7711,
+            0.7573,
+            0.7765
+          ]
+        },
+        "contribution_margin_per_trip": {
+          "mean": 12.8047,
+          "min": 12.795,
+          "max": 12.811,
+          "values": [
+            12.8081,
+            12.795,
+            12.811
+          ]
+        },
+        "utilization_pct": {
+          "mean": 87.5767,
+          "min": 87.34,
+          "max": 87.81,
+          "values": [
+            87.58,
+            87.34,
+            87.81
+          ]
+        },
+        "active_time_pct": {
+          "mean": 75.66,
+          "min": 74.22,
+          "max": 77.49,
+          "values": [
+            75.27,
+            77.49,
+            74.22
+          ]
+        },
+        "deadhead_pct": {
+          "mean": 12.4233,
+          "min": 12.19,
+          "max": 12.66,
+          "values": [
+            12.42,
+            12.66,
+            12.19
+          ]
+        },
+        "charger_utilization_pct": {
+          "mean": 36.4933,
+          "min": 35.98,
+          "max": 37.5,
+          "values": [
+            36.0,
+            37.5,
+            35.98
+          ]
+        },
+        "fleet_battery_pct": {
+          "mean": 39.4933,
+          "min": 38.89,
+          "max": 40.43,
+          "values": [
+            38.89,
+            40.43,
+            39.16
+          ]
+        },
+        "trips_per_vehicle_per_day": {
+          "mean": 74.93,
+          "min": 73.69,
+          "max": 76.57,
+          "values": [
+            74.53,
+            76.57,
+            73.69
+          ]
+        }
+      },
+      {
+        "fleet": 1500,
+        "seeds": [
+          7,
+          42,
+          123
+        ],
+        "served_pct": {
+          "mean": 63.17,
+          "min": 62.54,
+          "max": 63.65,
+          "values": [
+            63.32,
+            63.65,
+            62.54
+          ]
+        },
+        "sla_adherence_pct": {
+          "mean": 63.17,
+          "min": 62.54,
+          "max": 63.65,
+          "values": [
+            63.32,
+            63.65,
+            62.54
+          ]
+        },
+        "p10_wait_min": {
+          "mean": 0.0433,
+          "min": 0.043,
+          "max": 0.044,
+          "values": [
+            0.043,
+            0.043,
+            0.044
+          ]
+        },
+        "median_wait_min": {
+          "mean": 2.0563,
+          "min": 2.02,
+          "max": 2.092,
+          "values": [
+            2.02,
+            2.092,
+            2.057
+          ]
+        },
+        "p90_wait_min": {
+          "mean": 7.995,
+          "min": 7.975,
+          "max": 8.017,
+          "values": [
+            8.017,
+            7.993,
+            7.975
+          ]
+        },
+        "cost_per_trip": {
+          "mean": 0.7482,
+          "min": 0.7443,
+          "max": 0.753,
+          "values": [
+            0.7474,
+            0.7443,
+            0.753
+          ]
+        },
+        "contribution_margin_per_trip": {
+          "mean": 12.2945,
+          "min": 12.283,
+          "max": 12.3033,
+          "values": [
+            12.3033,
+            12.2971,
+            12.283
+          ]
+        },
+        "utilization_pct": {
+          "mean": 80.61,
+          "min": 80.54,
+          "max": 80.69,
+          "values": [
+            80.54,
+            80.69,
+            80.6
+          ]
+        },
+        "active_time_pct": {
+          "mean": 78.1467,
+          "min": 77.33,
+          "max": 78.64,
+          "values": [
+            78.47,
+            78.64,
+            77.33
+          ]
+        },
+        "deadhead_pct": {
+          "mean": 19.39,
+          "min": 19.31,
+          "max": 19.46,
+          "values": [
+            19.46,
+            19.31,
+            19.4
+          ]
+        },
+        "charger_utilization_pct": {
+          "mean": 59.0833,
+          "min": 58.53,
+          "max": 59.39,
+          "values": [
+            59.33,
+            59.39,
+            58.53
+          ]
+        },
+        "fleet_battery_pct": {
+          "mean": 66.8033,
+          "min": 66.56,
+          "max": 66.97,
+          "values": [
+            66.88,
+            66.56,
+            66.97
+          ]
+        },
+        "trips_per_vehicle_per_day": {
+          "mean": 73.0933,
+          "min": 72.36,
+          "max": 73.65,
+          "values": [
+            73.27,
+            73.65,
+            72.36
+          ]
+        }
+      },
+      {
+        "fleet": 2000,
+        "seeds": [
+          7,
+          42,
+          123
+        ],
+        "served_pct": {
+          "mean": 72.43,
+          "min": 71.8,
+          "max": 72.91,
+          "values": [
+            72.58,
+            72.91,
+            71.8
+          ]
+        },
+        "sla_adherence_pct": {
+          "mean": 72.43,
+          "min": 71.8,
+          "max": 72.91,
+          "values": [
+            72.58,
+            72.91,
+            71.8
+          ]
+        },
+        "p10_wait_min": {
+          "mean": 0.0217,
+          "min": 0.021,
+          "max": 0.022,
+          "values": [
+            0.022,
+            0.022,
+            0.021
+          ]
+        },
+        "median_wait_min": {
+          "mean": 2.2667,
+          "min": 2.247,
+          "max": 2.285,
+          "values": [
+            2.268,
+            2.285,
+            2.247
+          ]
+        },
+        "p90_wait_min": {
+          "mean": 7.7187,
+          "min": 7.69,
+          "max": 7.747,
+          "values": [
+            7.747,
+            7.69,
+            7.719
+          ]
+        },
+        "cost_per_trip": {
+          "mean": 0.8203,
+          "min": 0.8165,
+          "max": 0.8242,
+          "values": [
+            0.8201,
+            0.8165,
+            0.8242
+          ]
+        },
+        "contribution_margin_per_trip": {
+          "mean": 12.0367,
+          "min": 12.0261,
+          "max": 12.046,
+          "values": [
+            12.046,
+            12.038,
+            12.0261
+          ]
+        },
+        "utilization_pct": {
+          "mean": 74.5167,
+          "min": 74.31,
+          "max": 74.69,
+          "values": [
+            74.31,
+            74.55,
+            74.69
+          ]
+        },
+        "active_time_pct": {
+          "mean": 71.72,
+          "min": 70.87,
+          "max": 72.15,
+          "values": [
+            72.15,
+            72.14,
+            70.87
+          ]
+        },
+        "deadhead_pct": {
+          "mean": 25.4833,
+          "min": 25.31,
+          "max": 25.69,
+          "values": [
+            25.69,
+            25.45,
+            25.31
+          ]
+        },
+        "charger_utilization_pct": {
+          "mean": 72.29,
+          "min": 71.48,
+          "max": 72.71,
+          "values": [
+            72.68,
+            72.71,
+            71.48
+          ]
+        },
+        "fleet_battery_pct": {
+          "mean": 73.1133,
+          "min": 72.89,
+          "max": 73.28,
+          "values": [
+            73.28,
+            73.17,
+            72.89
+          ]
+        },
+        "trips_per_vehicle_per_day": {
+          "mean": 62.85,
+          "min": 62.3,
+          "max": 63.27,
+          "values": [
+            62.98,
+            63.27,
+            62.3
+          ]
+        }
+      },
+      {
+        "fleet": 2500,
+        "seeds": [
+          7,
+          42,
+          123
+        ],
+        "served_pct": {
+          "mean": 83.3267,
+          "min": 82.85,
+          "max": 83.59,
+          "values": [
+            83.54,
+            83.59,
+            82.85
+          ]
+        },
+        "sla_adherence_pct": {
+          "mean": 83.3267,
+          "min": 82.85,
+          "max": 83.59,
+          "values": [
+            83.54,
+            83.59,
+            82.85
+          ]
+        },
+        "p10_wait_min": {
+          "mean": 0.0123,
+          "min": 0.012,
+          "max": 0.013,
+          "values": [
+            0.012,
+            0.013,
+            0.012
+          ]
+        },
+        "median_wait_min": {
+          "mean": 2.678,
+          "min": 2.662,
+          "max": 2.695,
+          "values": [
+            2.677,
+            2.695,
+            2.662
+          ]
+        },
+        "p90_wait_min": {
+          "mean": 7.8207,
+          "min": 7.813,
+          "max": 7.827,
+          "values": [
+            7.822,
+            7.813,
+            7.827
+          ]
+        },
+        "cost_per_trip": {
+          "mean": 0.869,
+          "min": 0.8666,
+          "max": 0.8721,
+          "values": [
+            0.8683,
+            0.8666,
+            0.8721
+          ]
+        },
+        "contribution_margin_per_trip": {
+          "mean": 11.9756,
+          "min": 11.9713,
+          "max": 11.9827,
+          "values": [
+            11.9827,
+            11.9713,
+            11.9727
+          ]
+        },
+        "utilization_pct": {
+          "mean": 70.1367,
+          "min": 69.98,
+          "max": 70.23,
+          "values": [
+            69.98,
+            70.23,
+            70.2
+          ]
+        },
+        "active_time_pct": {
+          "mean": 69.9767,
+          "min": 69.49,
+          "max": 70.37,
+          "values": [
+            70.37,
+            70.07,
+            69.49
+          ]
+        },
+        "deadhead_pct": {
+          "mean": 29.8633,
+          "min": 29.77,
+          "max": 30.02,
+          "values": [
+            30.02,
+            29.77,
+            29.8
+          ]
+        },
+        "charger_utilization_pct": {
+          "mean": 85.1467,
+          "min": 84.69,
+          "max": 85.59,
+          "values": [
+            85.59,
+            85.16,
+            84.69
+          ]
+        },
+        "fleet_battery_pct": {
+          "mean": 74.0367,
+          "min": 73.92,
+          "max": 74.1,
+          "values": [
+            74.09,
+            74.1,
+            73.92
+          ]
+        },
+        "trips_per_vehicle_per_day": {
+          "mean": 57.8467,
+          "min": 57.51,
+          "max": 58.03,
+          "values": [
+            58.0,
+            58.03,
+            57.51
+          ]
+        }
+      },
+      {
+        "fleet": 3000,
+        "seeds": [
+          7,
+          42,
+          123
+        ],
+        "served_pct": {
+          "mean": 90.16,
+          "min": 89.95,
+          "max": 90.44,
+          "values": [
+            90.09,
+            90.44,
+            89.95
+          ]
+        },
+        "sla_adherence_pct": {
+          "mean": 90.16,
+          "min": 89.95,
+          "max": 90.44,
+          "values": [
+            90.09,
+            90.44,
+            89.95
+          ]
+        },
+        "p10_wait_min": {
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "values": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "median_wait_min": {
+          "mean": 2.947,
+          "min": 2.926,
+          "max": 2.978,
+          "values": [
+            2.926,
+            2.978,
+            2.937
+          ]
+        },
+        "p90_wait_min": {
+          "mean": 7.702,
+          "min": 7.685,
+          "max": 7.723,
+          "values": [
+            7.685,
+            7.723,
+            7.698
+          ]
+        },
+        "cost_per_trip": {
+          "mean": 0.9418,
+          "min": 0.94,
+          "max": 0.9429,
+          "values": [
+            0.9426,
+            0.94,
+            0.9429
+          ]
+        },
+        "contribution_margin_per_trip": {
+          "mean": 12.0288,
+          "min": 12.0231,
+          "max": 12.032,
+          "values": [
+            12.032,
+            12.0312,
+            12.0231
+          ]
+        },
+        "utilization_pct": {
+          "mean": 66.2767,
+          "min": 66.25,
+          "max": 66.32,
+          "values": [
+            66.25,
+            66.26,
+            66.32
+          ]
+        },
+        "active_time_pct": {
+          "mean": 67.3,
+          "min": 67.09,
+          "max": 67.49,
+          "values": [
+            67.32,
+            67.49,
+            67.09
+          ]
+        },
+        "deadhead_pct": {
+          "mean": 33.7233,
+          "min": 33.68,
+          "max": 33.75,
+          "values": [
+            33.75,
+            33.74,
+            33.68
+          ]
+        },
+        "charger_utilization_pct": {
+          "mean": 95.3367,
+          "min": 95.15,
+          "max": 95.49,
+          "values": [
+            95.49,
+            95.37,
+            95.15
+          ]
+        },
+        "fleet_battery_pct": {
+          "mean": 72.7033,
+          "min": 72.47,
+          "max": 72.85,
+          "values": [
+            72.85,
+            72.47,
+            72.79
+          ]
+        },
+        "trips_per_vehicle_per_day": {
+          "mean": 52.16,
+          "min": 52.04,
+          "max": 52.32,
+          "values": [
+            52.12,
+            52.32,
+            52.04
+          ]
+        }
+      },
+      {
+        "fleet": 3500,
+        "seeds": [
+          7,
+          42,
+          123
+        ],
+        "served_pct": {
+          "mean": 93.28,
+          "min": 92.94,
+          "max": 93.6,
+          "values": [
+            93.3,
+            93.6,
+            92.94
+          ]
+        },
+        "sla_adherence_pct": {
+          "mean": 93.28,
+          "min": 92.94,
+          "max": 93.6,
+          "values": [
+            93.3,
+            93.6,
+            92.94
+          ]
+        },
+        "p10_wait_min": {
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "values": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "median_wait_min": {
+          "mean": 2.8283,
+          "min": 2.812,
+          "max": 2.848,
+          "values": [
+            2.825,
+            2.812,
+            2.848
+          ]
+        },
+        "p90_wait_min": {
+          "mean": 7.4397,
+          "min": 7.38,
+          "max": 7.482,
+          "values": [
+            7.457,
+            7.38,
+            7.482
+          ]
+        },
+        "cost_per_trip": {
+          "mean": 1.019,
+          "min": 1.0162,
+          "max": 1.0214,
+          "values": [
+            1.0194,
+            1.0162,
+            1.0214
+          ]
+        },
+        "contribution_margin_per_trip": {
+          "mean": 12.1135,
+          "min": 12.0897,
+          "max": 12.1264,
+          "values": [
+            12.1264,
+            12.1245,
+            12.0897
+          ]
+        },
+        "utilization_pct": {
+          "mean": 66.1367,
+          "min": 66.01,
+          "max": 66.28,
+          "values": [
+            66.12,
+            66.28,
+            66.01
+          ]
+        },
+        "active_time_pct": {
+          "mean": 60.3033,
+          "min": 60.14,
+          "max": 60.4,
+          "values": [
+            60.4,
+            60.37,
+            60.14
+          ]
+        },
+        "deadhead_pct": {
+          "mean": 33.8633,
+          "min": 33.72,
+          "max": 33.99,
+          "values": [
+            33.88,
+            33.72,
+            33.99
+          ]
+        },
+        "charger_utilization_pct": {
+          "mean": 98.5467,
+          "min": 98.42,
+          "max": 98.63,
+          "values": [
+            98.59,
+            98.63,
+            98.42
+          ]
+        },
+        "fleet_battery_pct": {
+          "mean": 68.6367,
+          "min": 68.02,
+          "max": 69.38,
+          "values": [
+            68.51,
+            68.02,
+            69.38
+          ]
+        },
+        "trips_per_vehicle_per_day": {
+          "mean": 46.26,
+          "min": 46.09,
+          "max": 46.42,
+          "values": [
+            46.27,
+            46.42,
+            46.09
+          ]
+        }
+      },
+      {
+        "fleet": 4000,
+        "seeds": [
+          7,
+          42,
+          123
+        ],
+        "served_pct": {
+          "mean": 95.2333,
+          "min": 95.11,
+          "max": 95.39,
+          "values": [
+            95.11,
+            95.39,
+            95.2
+          ]
+        },
+        "sla_adherence_pct": {
+          "mean": 95.2333,
+          "min": 95.11,
+          "max": 95.39,
+          "values": [
+            95.11,
+            95.39,
+            95.2
+          ]
+        },
+        "p10_wait_min": {
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "values": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "median_wait_min": {
+          "mean": 2.5993,
+          "min": 2.575,
+          "max": 2.628,
+          "values": [
+            2.595,
+            2.575,
+            2.628
+          ]
+        },
+        "p90_wait_min": {
+          "mean": 7.218,
+          "min": 7.21,
+          "max": 7.232,
+          "values": [
+            7.21,
+            7.212,
+            7.232
+          ]
+        },
+        "cost_per_trip": {
+          "mean": 1.0952,
+          "min": 1.0938,
+          "max": 1.0963,
+          "values": [
+            1.0963,
+            1.0938,
+            1.0954
+          ]
+        },
+        "contribution_margin_per_trip": {
+          "mean": 12.1538,
+          "min": 12.1435,
+          "max": 12.1636,
+          "values": [
+            12.1636,
+            12.1543,
+            12.1435
+          ]
+        },
+        "utilization_pct": {
+          "mean": 66.96,
+          "min": 66.87,
+          "max": 67.01,
+          "values": [
+            67.0,
+            67.01,
+            66.87
+          ]
+        },
+        "active_time_pct": {
+          "mean": 53.5033,
+          "min": 53.46,
+          "max": 53.54,
+          "values": [
+            53.46,
+            53.51,
+            53.54
+          ]
+        },
+        "deadhead_pct": {
+          "mean": 33.04,
+          "min": 32.99,
+          "max": 33.13,
+          "values": [
+            33.0,
+            32.99,
+            33.13
+          ]
+        },
+        "charger_utilization_pct": {
+          "mean": 98.9333,
+          "min": 98.89,
+          "max": 98.96,
+          "values": [
+            98.89,
+            98.96,
+            98.95
+          ]
+        },
+        "fleet_battery_pct": {
+          "mean": 65.5333,
+          "min": 65.33,
+          "max": 65.73,
+          "values": [
+            65.54,
+            65.33,
+            65.73
+          ]
+        },
+        "trips_per_vehicle_per_day": {
+          "mean": 41.3233,
+          "min": 41.27,
+          "max": 41.39,
+          "values": [
+            41.27,
+            41.39,
+            41.31
+          ]
+        }
+      },
+      {
+        "fleet": 4250,
+        "seeds": [
+          7,
+          42,
+          123
+        ],
+        "served_pct": {
+          "mean": 95.8667,
+          "min": 95.75,
+          "max": 96.0,
+          "values": [
+            95.85,
+            96.0,
+            95.75
+          ]
+        },
+        "sla_adherence_pct": {
+          "mean": 95.8667,
+          "min": 95.75,
+          "max": 96.0,
+          "values": [
+            95.85,
+            96.0,
+            95.75
+          ]
+        },
+        "p10_wait_min": {
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "values": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "median_wait_min": {
+          "mean": 2.5083,
+          "min": 2.462,
+          "max": 2.573,
+          "values": [
+            2.49,
+            2.462,
+            2.573
+          ]
+        },
+        "p90_wait_min": {
+          "mean": 7.0883,
+          "min": 7.037,
+          "max": 7.15,
+          "values": [
+            7.078,
+            7.037,
+            7.15
+          ]
+        },
+        "cost_per_trip": {
+          "mean": 1.135,
+          "min": 1.1331,
+          "max": 1.1368,
+          "values": [
+            1.135,
+            1.1331,
+            1.1368
+          ]
+        },
+        "contribution_margin_per_trip": {
+          "mean": 12.1534,
+          "min": 12.1427,
+          "max": 12.1663,
+          "values": [
+            12.1663,
+            12.1513,
+            12.1427
+          ]
+        },
+        "utilization_pct": {
+          "mean": 67.2467,
+          "min": 66.99,
+          "max": 67.38,
+          "values": [
+            67.37,
+            67.38,
+            66.99
+          ]
+        },
+        "active_time_pct": {
+          "mean": 50.57,
+          "min": 50.48,
+          "max": 50.69,
+          "values": [
+            50.54,
+            50.48,
+            50.69
+          ]
+        },
+        "deadhead_pct": {
+          "mean": 32.7533,
+          "min": 32.62,
+          "max": 33.01,
+          "values": [
+            32.63,
+            32.62,
+            33.01
+          ]
+        },
+        "charger_utilization_pct": {
+          "mean": 98.9733,
+          "min": 98.89,
+          "max": 99.04,
+          "values": [
+            99.04,
+            98.89,
+            98.99
+          ]
+        },
+        "fleet_battery_pct": {
+          "mean": 64.53,
+          "min": 64.39,
+          "max": 64.66,
+          "values": [
+            64.54,
+            64.39,
+            64.66
+          ]
+        },
+        "trips_per_vehicle_per_day": {
+          "mean": 39.15,
+          "min": 39.1,
+          "max": 39.21,
+          "values": [
+            39.14,
+            39.21,
+            39.1
+          ]
+        }
+      },
+      {
+        "fleet": 4500,
+        "seeds": [
+          7,
+          42,
+          123
+        ],
+        "served_pct": {
+          "mean": 96.2633,
+          "min": 96.19,
+          "max": 96.32,
+          "values": [
+            96.19,
+            96.28,
+            96.32
+          ]
+        },
+        "sla_adherence_pct": {
+          "mean": 96.2633,
+          "min": 96.19,
+          "max": 96.32,
+          "values": [
+            96.19,
+            96.28,
+            96.32
+          ]
+        },
+        "p10_wait_min": {
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "values": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "median_wait_min": {
+          "mean": 2.4013,
+          "min": 2.367,
+          "max": 2.462,
+          "values": [
+            2.367,
+            2.375,
+            2.462
+          ]
+        },
+        "p90_wait_min": {
+          "mean": 6.9833,
+          "min": 6.947,
+          "max": 7.033,
+          "values": [
+            6.97,
+            6.947,
+            7.033
+          ]
+        },
+        "cost_per_trip": {
+          "mean": 1.1754,
+          "min": 1.1743,
+          "max": 1.176,
+          "values": [
+            1.1759,
+            1.1743,
+            1.176
+          ]
+        },
+        "contribution_margin_per_trip": {
+          "mean": 12.1401,
+          "min": 12.1294,
+          "max": 12.1503,
+          "values": [
+            12.1503,
+            12.1294,
+            12.1406
+          ]
+        },
+        "utilization_pct": {
+          "mean": 67.6533,
+          "min": 67.4,
+          "max": 67.79,
+          "values": [
+            67.77,
+            67.79,
+            67.4
+          ]
+        },
+        "active_time_pct": {
+          "mean": 47.7567,
+          "min": 47.61,
+          "max": 47.97,
+          "values": [
+            47.69,
+            47.61,
+            47.97
+          ]
+        },
+        "deadhead_pct": {
+          "mean": 32.3467,
+          "min": 32.21,
+          "max": 32.6,
+          "values": [
+            32.23,
+            32.21,
+            32.6
+          ]
+        },
+        "charger_utilization_pct": {
+          "mean": 99.03,
+          "min": 99.0,
+          "max": 99.06,
+          "values": [
+            99.06,
+            99.0,
+            99.03
+          ]
+        },
+        "fleet_battery_pct": {
+          "mean": 64.4067,
+          "min": 63.96,
+          "max": 64.78,
+          "values": [
+            64.48,
+            64.78,
+            63.96
+          ]
+        },
+        "trips_per_vehicle_per_day": {
+          "mean": 37.1267,
+          "min": 37.1,
+          "max": 37.15,
+          "values": [
+            37.1,
+            37.13,
+            37.15
+          ]
+        }
+      },
+      {
+        "fleet": 4750,
+        "seeds": [
+          7,
+          42,
+          123
+        ],
+        "served_pct": {
+          "mean": 96.5367,
+          "min": 96.48,
+          "max": 96.64,
+          "values": [
+            96.49,
+            96.48,
+            96.64
+          ]
+        },
+        "sla_adherence_pct": {
+          "mean": 96.5367,
+          "min": 96.48,
+          "max": 96.64,
+          "values": [
+            96.49,
+            96.48,
+            96.64
+          ]
+        },
+        "p10_wait_min": {
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "values": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "median_wait_min": {
+          "mean": 2.246,
+          "min": 2.215,
+          "max": 2.3,
+          "values": [
+            2.223,
+            2.215,
+            2.3
+          ]
+        },
+        "p90_wait_min": {
+          "mean": 6.8513,
+          "min": 6.837,
+          "max": 6.862,
+          "values": [
+            6.855,
+            6.837,
+            6.862
+          ]
+        },
+        "cost_per_trip": {
+          "mean": 1.2167,
+          "min": 1.2164,
+          "max": 1.2171,
+          "values": [
+            1.2171,
+            1.2164,
+            1.2166
+          ]
+        },
+        "contribution_margin_per_trip": {
+          "mean": 12.1176,
+          "min": 12.1022,
+          "max": 12.1318,
+          "values": [
+            12.1318,
+            12.1022,
+            12.1187
+          ]
+        },
+        "utilization_pct": {
+          "mean": 67.9933,
+          "min": 67.81,
+          "max": 68.1,
+          "values": [
+            68.1,
+            68.07,
+            67.81
+          ]
+        },
+        "active_time_pct": {
+          "mean": 45.1967,
+          "min": 45.06,
+          "max": 45.37,
+          "values": [
+            45.16,
+            45.06,
+            45.37
+          ]
+        },
+        "deadhead_pct": {
+          "mean": 32.0067,
+          "min": 31.9,
+          "max": 32.19,
+          "values": [
+            31.9,
+            31.93,
+            32.19
+          ]
+        },
+        "charger_utilization_pct": {
+          "mean": 99.02,
+          "min": 99.0,
+          "max": 99.04,
+          "values": [
+            99.02,
+            99.04,
+            99.0
+          ]
+        },
+        "fleet_battery_pct": {
+          "mean": 64.31,
+          "min": 63.93,
+          "max": 64.66,
+          "values": [
+            64.34,
+            64.66,
+            63.93
+          ]
+        },
+        "trips_per_vehicle_per_day": {
+          "mean": 35.2733,
+          "min": 35.25,
+          "max": 35.31,
+          "values": [
+            35.26,
+            35.25,
+            35.31
+          ]
+        }
+      },
+      {
+        "fleet": 5000,
+        "seeds": [
+          7,
+          42,
+          123
+        ],
+        "served_pct": {
+          "mean": 96.6533,
+          "min": 96.59,
+          "max": 96.73,
+          "values": [
+            96.59,
+            96.64,
+            96.73
+          ]
+        },
+        "sla_adherence_pct": {
+          "mean": 96.6533,
+          "min": 96.59,
+          "max": 96.73,
+          "values": [
+            96.59,
+            96.64,
+            96.73
+          ]
+        },
+        "p10_wait_min": {
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "values": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "median_wait_min": {
+          "mean": 2.1877,
+          "min": 2.163,
+          "max": 2.215,
+          "values": [
+            2.185,
+            2.163,
+            2.215
+          ]
+        },
+        "p90_wait_min": {
+          "mean": 6.781,
+          "min": 6.77,
+          "max": 6.803,
+          "values": [
+            6.77,
+            6.77,
+            6.803
+          ]
+        },
+        "cost_per_trip": {
+          "mean": 1.2597,
+          "min": 1.2589,
+          "max": 1.2602,
+          "values": [
+            1.2602,
+            1.2589,
+            1.2599
+          ]
+        },
+        "contribution_margin_per_trip": {
+          "mean": 12.0844,
+          "min": 12.0754,
+          "max": 12.0959,
+          "values": [
+            12.0959,
+            12.0754,
+            12.0819
+          ]
+        },
+        "utilization_pct": {
+          "mean": 68.1767,
+          "min": 67.95,
+          "max": 68.31,
+          "values": [
+            68.27,
+            68.31,
+            67.95
+          ]
+        },
+        "active_time_pct": {
+          "mean": 42.9,
+          "min": 42.78,
+          "max": 43.06,
+          "values": [
+            42.86,
+            42.78,
+            43.06
+          ]
+        },
+        "deadhead_pct": {
+          "mean": 31.8233,
+          "min": 31.69,
+          "max": 32.05,
+          "values": [
+            31.73,
+            31.69,
+            32.05
+          ]
+        },
+        "charger_utilization_pct": {
+          "mean": 98.95,
+          "min": 98.93,
+          "max": 98.97,
+          "values": [
+            98.95,
+            98.97,
+            98.93
+          ]
+        },
+        "fleet_battery_pct": {
+          "mean": 64.5733,
+          "min": 64.13,
+          "max": 64.97,
+          "values": [
+            64.62,
+            64.97,
+            64.13
+          ]
+        },
+        "trips_per_vehicle_per_day": {
+          "mean": 33.5533,
+          "min": 33.53,
+          "max": 33.58,
+          "values": [
+            33.53,
+            33.55,
+            33.58
+          ]
+        }
+      },
+      {
+        "fleet": 5500,
+        "seeds": [
+          7,
+          42,
+          123
+        ],
+        "served_pct": {
+          "mean": 96.8133,
+          "min": 96.78,
+          "max": 96.87,
+          "values": [
+            96.79,
+            96.78,
+            96.87
+          ]
+        },
+        "sla_adherence_pct": {
+          "mean": 96.8133,
+          "min": 96.78,
+          "max": 96.87,
+          "values": [
+            96.79,
+            96.78,
+            96.87
+          ]
+        },
+        "p10_wait_min": {
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "values": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "median_wait_min": {
+          "mean": 2.0623,
+          "min": 2.057,
+          "max": 2.073,
+          "values": [
+            2.057,
+            2.057,
+            2.073
+          ]
+        },
+        "p90_wait_min": {
+          "mean": 6.639,
+          "min": 6.633,
+          "max": 6.642,
+          "values": [
+            6.633,
+            6.642,
+            6.642
+          ]
+        },
+        "cost_per_trip": {
+          "mean": 1.3459,
+          "min": 1.3455,
+          "max": 1.3463,
+          "values": [
+            1.3463,
+            1.3455,
+            1.3459
+          ]
+        },
+        "contribution_margin_per_trip": {
+          "mean": 12.0124,
+          "min": 12.0026,
+          "max": 12.0271,
+          "values": [
+            12.0271,
+            12.0026,
+            12.0076
+          ]
+        },
+        "utilization_pct": {
+          "mean": 68.5667,
+          "min": 68.38,
+          "max": 68.67,
+          "values": [
+            68.65,
+            68.67,
+            68.38
+          ]
+        },
+        "active_time_pct": {
+          "mean": 38.89,
+          "min": 38.78,
+          "max": 39.02,
+          "values": [
+            38.87,
+            38.78,
+            39.02
+          ]
+        },
+        "deadhead_pct": {
+          "mean": 31.4333,
+          "min": 31.33,
+          "max": 31.62,
+          "values": [
+            31.35,
+            31.33,
+            31.62
+          ]
+        },
+        "charger_utilization_pct": {
+          "mean": 98.79,
+          "min": 98.78,
+          "max": 98.8,
+          "values": [
+            98.79,
+            98.8,
+            98.78
+          ]
+        },
+        "fleet_battery_pct": {
+          "mean": 65.41,
+          "min": 65.14,
+          "max": 65.82,
+          "values": [
+            65.27,
+            65.82,
+            65.14
+          ]
+        },
+        "trips_per_vehicle_per_day": {
+          "mean": 30.55,
+          "min": 30.54,
+          "max": 30.57,
+          "values": [
+            30.54,
+            30.54,
+            30.57
+          ]
+        }
+      }
+    ]
+  },
+  "geographic": {
+    "points": [
+      {
+        "n_sites": 2,
+        "label": "geo_N2_308p20kW",
+        "plugs_per_site": 308,
+        "charger_kw": 20.0,
+        "fleet_size": 4500,
+        "battery_kwh": 75.0,
+        "seeds": [
+          7,
+          42,
+          123
+        ],
+        "served_pct": {
+          "mean": 93.86,
+          "min": 93.83,
+          "max": 93.92,
+          "values": [
+            93.83,
+            93.92,
+            93.83
+          ]
+        },
+        "sla_adherence_pct": {
+          "mean": 93.86,
+          "min": 93.83,
+          "max": 93.92,
+          "values": [
+            93.83,
+            93.92,
+            93.83
+          ]
+        },
+        "p10_wait_min": {
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "values": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "median_wait_min": {
+          "mean": 2.954,
+          "min": 2.892,
+          "max": 3.052,
+          "values": [
+            2.918,
+            2.892,
+            3.052
+          ]
+        },
+        "p90_wait_min": {
+          "mean": 7.4687,
+          "min": 7.445,
+          "max": 7.508,
+          "values": [
+            7.445,
+            7.453,
+            7.508
+          ]
+        },
+        "cost_per_trip": {
+          "mean": 1.1794,
+          "min": 1.1782,
+          "max": 1.18,
+          "values": [
+            1.18,
+            1.1782,
+            1.18
+          ]
+        },
+        "contribution_margin_per_trip": {
+          "mean": 11.9323,
+          "min": 11.9245,
+          "max": 11.9472,
+          "values": [
+            11.9472,
+            11.9245,
+            11.9253
+          ]
+        },
+        "utilization_pct": {
+          "mean": 66.9333,
+          "min": 66.79,
+          "max": 67.04,
+          "values": [
+            66.97,
+            67.04,
+            66.79
+          ]
+        },
+        "active_time_pct": {
+          "mean": null,
+          "min": null,
+          "max": null,
+          "values": []
+        },
+        "deadhead_pct": {
+          "mean": 33.0667,
+          "min": 32.96,
+          "max": 33.21,
+          "values": [
+            33.03,
+            32.96,
+            33.21
+          ]
+        },
+        "charger_utilization_pct": {
+          "mean": 64.1667,
+          "min": 64.11,
+          "max": 64.26,
+          "values": [
+            64.26,
+            64.11,
+            64.13
+          ]
+        },
+        "fleet_battery_pct": {
+          "mean": 77.1667,
+          "min": 77.1,
+          "max": 77.25,
+          "values": [
+            77.15,
+            77.25,
+            77.1
+          ]
+        },
+        "trips_per_vehicle_per_day": {
+          "mean": 36.2,
+          "min": 36.19,
+          "max": 36.22,
+          "values": [
+            36.19,
+            36.22,
+            36.19
+          ]
+        }
+      },
+      {
+        "n_sites": 5,
+        "label": "geo_N5_124p20kW",
+        "plugs_per_site": 124,
+        "charger_kw": 20.0,
+        "fleet_size": 4500,
+        "battery_kwh": 75.0,
+        "seeds": [
+          7,
+          42,
+          123
+        ],
+        "served_pct": {
+          "mean": 81.66,
+          "min": 80.9,
+          "max": 82.28,
+          "values": [
+            81.8,
+            82.28,
+            80.9
+          ]
+        },
+        "sla_adherence_pct": {
+          "mean": 81.66,
+          "min": 80.9,
+          "max": 82.28,
+          "values": [
+            81.8,
+            82.28,
+            80.9
+          ]
+        },
+        "p10_wait_min": {
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "values": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "median_wait_min": {
+          "mean": 2.328,
+          "min": 2.292,
+          "max": 2.352,
+          "values": [
+            2.292,
+            2.34,
+            2.352
+          ]
+        },
+        "p90_wait_min": {
+          "mean": 7.0333,
+          "min": 7.018,
+          "max": 7.047,
+          "values": [
+            7.018,
+            7.035,
+            7.047
+          ]
+        },
+        "cost_per_trip": {
+          "mean": 1.2922,
+          "min": 1.2842,
+          "max": 1.3017,
+          "values": [
+            1.2908,
+            1.2842,
+            1.3017
+          ]
+        },
+        "contribution_margin_per_trip": {
+          "mean": 11.7324,
+          "min": 11.7217,
+          "max": 11.7425,
+          "values": [
+            11.7425,
+            11.733,
+            11.7217
+          ]
+        },
+        "utilization_pct": {
+          "mean": 71.28,
+          "min": 71.24,
+          "max": 71.34,
+          "values": [
+            71.26,
+            71.34,
+            71.24
+          ]
+        },
+        "active_time_pct": {
+          "mean": null,
+          "min": null,
+          "max": null,
+          "values": []
+        },
+        "deadhead_pct": {
+          "mean": 28.72,
+          "min": 28.66,
+          "max": 28.76,
+          "values": [
+            28.74,
+            28.66,
+            28.76
+          ]
+        },
+        "charger_utilization_pct": {
+          "mean": 54.7133,
+          "min": 54.22,
+          "max": 54.98,
+          "values": [
+            54.94,
+            54.98,
+            54.22
+          ]
+        },
+        "fleet_battery_pct": {
+          "mean": 76.34,
+          "min": 76.34,
+          "max": 76.34,
+          "values": [
+            76.34,
+            76.34,
+            76.34
+          ]
+        },
+        "trips_per_vehicle_per_day": {
+          "mean": 31.4967,
+          "min": 31.2,
+          "max": 31.74,
+          "values": [
+            31.55,
+            31.74,
+            31.2
+          ]
+        }
+      },
+      {
+        "n_sites": 20,
+        "label": "geo_N20_31p20kW",
+        "plugs_per_site": 31,
+        "charger_kw": 20.0,
+        "fleet_size": 4500,
+        "battery_kwh": 75.0,
+        "seeds": [
+          7,
+          42,
+          123
+        ],
+        "served_pct": {
+          "mean": 93.6,
+          "min": 93.43,
+          "max": 93.86,
+          "values": [
+            93.43,
+            93.86,
+            93.51
+          ]
+        },
+        "sla_adherence_pct": {
+          "mean": 93.6,
+          "min": 93.43,
+          "max": 93.86,
+          "values": [
+            93.43,
+            93.86,
+            93.51
+          ]
+        },
+        "p10_wait_min": {
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "values": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "median_wait_min": {
+          "mean": 2.588,
+          "min": 2.577,
+          "max": 2.61,
+          "values": [
+            2.577,
+            2.577,
+            2.61
+          ]
+        },
+        "p90_wait_min": {
+          "mean": 7.154,
+          "min": 7.127,
+          "max": 7.185,
+          "values": [
+            7.15,
+            7.127,
+            7.185
+          ]
+        },
+        "cost_per_trip": {
+          "mean": 1.2081,
+          "min": 1.2055,
+          "max": 1.2103,
+          "values": [
+            1.2103,
+            1.2055,
+            1.2084
+          ]
+        },
+        "contribution_margin_per_trip": {
+          "mean": 11.9768,
+          "min": 11.9684,
+          "max": 11.9827,
+          "values": [
+            11.9792,
+            11.9827,
+            11.9684
+          ]
+        },
+        "utilization_pct": {
+          "mean": 67.7433,
+          "min": 67.63,
+          "max": 67.81,
+          "values": [
+            67.63,
+            67.81,
+            67.79
+          ]
+        },
+        "active_time_pct": {
+          "mean": null,
+          "min": null,
+          "max": null,
+          "values": []
+        },
+        "deadhead_pct": {
+          "mean": 32.2567,
+          "min": 32.19,
+          "max": 32.37,
+          "values": [
+            32.37,
+            32.19,
+            32.21
+          ]
+        },
+        "charger_utilization_pct": {
+          "mean": 65.23,
+          "min": 65.01,
+          "max": 65.35,
+          "values": [
+            65.35,
+            65.33,
+            65.01
+          ]
+        },
+        "fleet_battery_pct": {
+          "mean": 76.74,
+          "min": 76.69,
+          "max": 76.79,
+          "values": [
+            76.74,
+            76.79,
+            76.69
+          ]
+        },
+        "trips_per_vehicle_per_day": {
+          "mean": 36.1,
+          "min": 36.04,
+          "max": 36.2,
+          "values": [
+            36.04,
+            36.2,
+            36.06
+          ]
+        }
+      },
+      {
+        "n_sites": 77,
+        "label": "geo_N77_8p20kW",
+        "plugs_per_site": 8,
+        "charger_kw": 20.0,
+        "fleet_size": 4500,
+        "battery_kwh": 75.0,
+        "seeds": [
+          7,
+          42,
+          123
+        ],
+        "served_pct": {
+          "mean": 95.08,
+          "min": 94.93,
+          "max": 95.2,
+          "values": [
+            95.11,
+            95.2,
+            94.93
+          ]
+        },
+        "sla_adherence_pct": {
+          "mean": 95.08,
+          "min": 94.93,
+          "max": 95.2,
+          "values": [
+            95.11,
+            95.2,
+            94.93
+          ]
+        },
+        "p10_wait_min": {
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "values": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "median_wait_min": {
+          "mean": 2.6707,
+          "min": 2.628,
+          "max": 2.752,
+          "values": [
+            2.632,
+            2.628,
+            2.752
+          ]
+        },
+        "p90_wait_min": {
+          "mean": 7.0227,
+          "min": 6.972,
+          "max": 7.098,
+          "values": [
+            6.998,
+            6.972,
+            7.098
+          ]
+        },
+        "cost_per_trip": {
+          "mean": 1.3036,
+          "min": 1.3015,
+          "max": 1.3051,
+          "values": [
+            1.3042,
+            1.3015,
+            1.3051
+          ]
+        },
+        "contribution_margin_per_trip": {
+          "mean": 11.9095,
+          "min": 11.8955,
+          "max": 11.9236,
+          "values": [
+            11.9236,
+            11.9093,
+            11.8955
+          ]
+        },
+        "utilization_pct": {
+          "mean": 63.2233,
+          "min": 63.13,
+          "max": 63.39,
+          "values": [
+            63.15,
+            63.39,
+            63.13
+          ]
+        },
+        "active_time_pct": {
+          "mean": null,
+          "min": null,
+          "max": null,
+          "values": []
+        },
+        "deadhead_pct": {
+          "mean": 36.7767,
+          "min": 36.61,
+          "max": 36.87,
+          "values": [
+            36.85,
+            36.61,
+            36.87
+          ]
+        },
+        "charger_utilization_pct": {
+          "mean": 71.8,
+          "min": 71.53,
+          "max": 72.09,
+          "values": [
+            72.09,
+            71.78,
+            71.53
+          ]
+        },
+        "fleet_battery_pct": {
+          "mean": 76.83,
+          "min": 76.7,
+          "max": 76.96,
+          "values": [
+            76.83,
+            76.96,
+            76.7
+          ]
+        },
+        "trips_per_vehicle_per_day": {
+          "mean": 36.67,
+          "min": 36.61,
+          "max": 36.72,
+          "values": [
+            36.68,
+            36.72,
+            36.61
+          ]
+        }
+      }
+    ]
+  },
+  "charger": {
+    "anchors": [
+      {
+        "label": "charger_matched_N77_2p57kW",
+        "n_sites": 77,
+        "plugs_per_site": 2,
+        "charger_kw": 57.5,
+        "fleet_size": 4500,
+        "battery_kwh": 75.0,
+        "seeds": [
+          42,
+          123,
+          314
+        ],
+        "served_pct": {
+          "mean": 95.3267,
+          "min": 95.12,
+          "max": 95.59,
+          "values": [
+            95.27,
+            95.12,
+            95.59
+          ]
+        },
+        "sla_adherence_pct": {
+          "mean": 95.3267,
+          "min": 95.12,
+          "max": 95.59,
+          "values": [
+            95.27,
+            95.12,
+            95.59
+          ]
+        },
+        "p10_wait_min": {
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "values": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "median_wait_min": {
+          "mean": 2.554,
+          "min": 2.538,
+          "max": 2.572,
+          "values": [
+            2.552,
+            2.572,
+            2.538
+          ]
+        },
+        "p90_wait_min": {
+          "mean": 7.0223,
+          "min": 7.017,
+          "max": 7.033,
+          "values": [
+            7.017,
+            7.017,
+            7.033
+          ]
+        },
+        "cost_per_trip": {
+          "mean": 1.2855,
+          "min": 1.2833,
+          "max": 1.2875,
+          "values": [
+            1.2856,
+            1.2875,
+            1.2833
+          ]
+        },
+        "contribution_margin_per_trip": {
+          "mean": 12.0561,
+          "min": 12.0472,
+          "max": 12.0645,
+          "values": [
+            12.0645,
+            12.0472,
+            12.0566
+          ]
+        },
+        "utilization_pct": {
+          "mean": 66.2867,
+          "min": 66.19,
+          "max": 66.44,
+          "values": [
+            66.44,
+            66.23,
+            66.19
+          ]
+        },
+        "active_time_pct": {
+          "mean": null,
+          "min": null,
+          "max": null,
+          "values": []
+        },
+        "deadhead_pct": {
+          "mean": 33.7133,
+          "min": 33.56,
+          "max": 33.81,
+          "values": [
+            33.56,
+            33.77,
+            33.81
+          ]
+        },
+        "charger_utilization_pct": {
+          "mean": 92.1433,
+          "min": 92.12,
+          "max": 92.16,
+          "values": [
+            92.12,
+            92.16,
+            92.15
+          ]
+        },
+        "fleet_battery_pct": {
+          "mean": 66.78,
+          "min": 66.2,
+          "max": 67.11,
+          "values": [
+            67.03,
+            67.11,
+            66.2
+          ]
+        },
+        "trips_per_vehicle_per_day": {
+          "mean": 36.7667,
+          "min": 36.69,
+          "max": 36.87,
+          "values": [
+            36.74,
+            36.69,
+            36.87
+          ]
+        }
+      },
+      {
+        "label": "charger_slow_N77_10p11kW",
+        "n_sites": 77,
+        "plugs_per_site": 10,
+        "charger_kw": 11.5,
+        "fleet_size": 4500,
+        "battery_kwh": 75.0,
+        "seeds": [
+          7,
+          42,
+          123
+        ],
+        "served_pct": {
+          "mean": 95.81,
+          "min": 95.72,
+          "max": 95.95,
+          "values": [
+            95.72,
+            95.76,
+            95.95
+          ]
+        },
+        "sla_adherence_pct": {
+          "mean": 95.81,
+          "min": 95.72,
+          "max": 95.95,
+          "values": [
+            95.72,
+            95.76,
+            95.95
+          ]
+        },
+        "p10_wait_min": {
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "values": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "median_wait_min": {
+          "mean": 2.102,
+          "min": 2.073,
+          "max": 2.16,
+          "values": [
+            2.073,
+            2.073,
+            2.16
+          ]
+        },
+        "p90_wait_min": {
+          "mean": 6.487,
+          "min": 6.462,
+          "max": 6.537,
+          "values": [
+            6.462,
+            6.462,
+            6.537
+          ]
+        },
+        "cost_per_trip": {
+          "mean": 1.295,
+          "min": 1.2943,
+          "max": 1.2962,
+          "values": [
+            1.2962,
+            1.2945,
+            1.2943
+          ]
+        },
+        "contribution_margin_per_trip": {
+          "mean": 11.9151,
+          "min": 11.9049,
+          "max": 11.9232,
+          "values": [
+            11.9171,
+            11.9049,
+            11.9232
+          ]
+        },
+        "utilization_pct": {
+          "mean": 61.9267,
+          "min": 61.85,
+          "max": 62.04,
+          "values": [
+            61.89,
+            62.04,
+            61.85
+          ]
+        },
+        "active_time_pct": {
+          "mean": null,
+          "min": null,
+          "max": null,
+          "values": []
+        },
+        "deadhead_pct": {
+          "mean": 38.0733,
+          "min": 37.96,
+          "max": 38.15,
+          "values": [
+            38.11,
+            37.96,
+            38.15
+          ]
+        },
+        "charger_utilization_pct": {
+          "mean": 100.2667,
+          "min": 100.15,
+          "max": 100.36,
+          "values": [
+            100.36,
+            100.15,
+            100.29
+          ]
+        },
+        "fleet_battery_pct": {
+          "mean": 63.5833,
+          "min": 63.3,
+          "max": 64.04,
+          "values": [
+            63.3,
+            64.04,
+            63.41
+          ]
+        },
+        "trips_per_vehicle_per_day": {
+          "mean": 36.95,
+          "min": 36.92,
+          "max": 37.0,
+          "values": [
+            36.92,
+            36.93,
+            37.0
+          ]
+        }
+      }
+    ],
+    "plug_sweep": [
+      {
+        "plugs_per_site": 1,
+        "charger_kw": 115.0,
+        "total_plugs": 77,
+        "total_mw": 8.855,
+        "seeds": [
+          7,
+          42,
+          123
+        ],
+        "served_pct": {
+          "mean": 92.2933,
+          "min": 91.61,
+          "max": 92.88,
+          "values": [
+            92.39,
+            92.88,
+            91.61
+          ]
+        },
+        "sla_adherence_pct": {
+          "mean": 92.2933,
+          "min": 91.61,
+          "max": 92.88,
+          "values": [
+            92.39,
+            92.88,
+            91.61
+          ]
+        },
+        "p90_wait_min": {
+          "mean": 7.2457,
+          "min": 7.228,
+          "max": 7.272,
+          "values": [
+            7.237,
+            7.272,
+            7.228
+          ]
+        },
+        "cost_per_trip": {
+          "mean": 1.2886,
+          "min": 1.2828,
+          "max": 1.2952,
+          "values": [
+            1.2879,
+            1.2828,
+            1.2952
+          ]
+        },
+        "charger_utilization_pct": {
+          "mean": 80.1867,
+          "min": 79.69,
+          "max": 80.47,
+          "values": [
+            80.4,
+            80.47,
+            79.69
+          ]
+        },
+        "fleet_battery_pct": {
+          "mean": 65.9367,
+          "min": 65.87,
+          "max": 66.03,
+          "values": [
+            66.03,
+            65.91,
+            65.87
+          ]
+        },
+        "deadhead_pct": {
+          "mean": 27.7033,
+          "min": 27.59,
+          "max": 27.83,
+          "values": [
+            27.69,
+            27.83,
+            27.59
+          ]
+        }
+      },
+      {
+        "plugs_per_site": 2,
+        "charger_kw": 57.5,
+        "total_plugs": 154,
+        "total_mw": 8.855,
+        "seeds": [
+          42,
+          123,
+          314
+        ],
+        "served_pct": {
+          "mean": 95.3267,
+          "min": 95.12,
+          "max": 95.59,
+          "values": [
+            95.27,
+            95.12,
+            95.59
+          ]
+        },
+        "sla_adherence_pct": {
+          "mean": 95.3267,
+          "min": 95.12,
+          "max": 95.59,
+          "values": [
+            95.27,
+            95.12,
+            95.59
+          ]
+        },
+        "p90_wait_min": {
+          "mean": 7.0223,
+          "min": 7.017,
+          "max": 7.033,
+          "values": [
+            7.017,
+            7.017,
+            7.033
+          ]
+        },
+        "cost_per_trip": {
+          "mean": 1.2855,
+          "min": 1.2833,
+          "max": 1.2875,
+          "values": [
+            1.2856,
+            1.2875,
+            1.2833
+          ]
+        },
+        "charger_utilization_pct": {
+          "mean": 92.1433,
+          "min": 92.12,
+          "max": 92.16,
+          "values": [
+            92.12,
+            92.16,
+            92.15
+          ]
+        },
+        "fleet_battery_pct": {
+          "mean": 66.78,
+          "min": 66.2,
+          "max": 67.11,
+          "values": [
+            67.03,
+            67.11,
+            66.2
+          ]
+        },
+        "deadhead_pct": {
+          "mean": 33.7133,
+          "min": 33.56,
+          "max": 33.81,
+          "values": [
+            33.56,
+            33.77,
+            33.81
+          ]
+        }
+      },
+      {
+        "plugs_per_site": 4,
+        "charger_kw": 28.75,
+        "total_plugs": 308,
+        "total_mw": 8.855,
+        "seeds": [
+          7,
+          42,
+          123
+        ],
+        "served_pct": {
+          "mean": 96.1367,
+          "min": 96.09,
+          "max": 96.18,
+          "values": [
+            96.14,
+            96.18,
+            96.09
+          ]
+        },
+        "sla_adherence_pct": {
+          "mean": 96.1367,
+          "min": 96.09,
+          "max": 96.18,
+          "values": [
+            96.14,
+            96.18,
+            96.09
+          ]
+        },
+        "p90_wait_min": {
+          "mean": 6.7477,
+          "min": 6.688,
+          "max": 6.867,
+          "values": [
+            6.688,
+            6.688,
+            6.867
+          ]
+        },
+        "cost_per_trip": {
+          "mean": 1.2888,
+          "min": 1.2871,
+          "max": 1.2904,
+          "values": [
+            1.2889,
+            1.2871,
+            1.2904
+          ]
+        },
+        "charger_utilization_pct": {
+          "mean": 98.01,
+          "min": 97.96,
+          "max": 98.04,
+          "values": [
+            98.04,
+            97.96,
+            98.03
+          ]
+        },
+        "fleet_battery_pct": {
+          "mean": 63.4933,
+          "min": 63.11,
+          "max": 63.71,
+          "values": [
+            63.11,
+            63.66,
+            63.71
+          ]
+        },
+        "deadhead_pct": {
+          "mean": 37.4733,
+          "min": 37.27,
+          "max": 37.73,
+          "values": [
+            37.42,
+            37.27,
+            37.73
+          ]
+        }
+      },
+      {
+        "plugs_per_site": 7,
+        "charger_kw": 16.5,
+        "total_plugs": 539,
+        "total_mw": 8.893,
+        "seeds": [
+          7,
+          42,
+          123
+        ],
+        "served_pct": {
+          "mean": 96.0533,
+          "min": 95.98,
+          "max": 96.16,
+          "values": [
+            95.98,
+            96.02,
+            96.16
+          ]
+        },
+        "sla_adherence_pct": {
+          "mean": 96.0533,
+          "min": 95.98,
+          "max": 96.16,
+          "values": [
+            95.98,
+            96.02,
+            96.16
+          ]
+        },
+        "p90_wait_min": {
+          "mean": 6.5147,
+          "min": 6.468,
+          "max": 6.568,
+          "values": [
+            6.508,
+            6.468,
+            6.568
+          ]
+        },
+        "cost_per_trip": {
+          "mean": 1.2916,
+          "min": 1.291,
+          "max": 1.2926,
+          "values": [
+            1.2926,
+            1.291,
+            1.2913
+          ]
+        },
+        "charger_utilization_pct": {
+          "mean": 99.57,
+          "min": 99.45,
+          "max": 99.68,
+          "values": [
+            99.68,
+            99.45,
+            99.58
+          ]
+        },
+        "fleet_battery_pct": {
+          "mean": 63.7733,
+          "min": 63.63,
+          "max": 64.04,
+          "values": [
+            63.63,
+            64.04,
+            63.65
+          ]
+        },
+        "deadhead_pct": {
+          "mean": 37.88,
+          "min": 37.75,
+          "max": 38.0,
+          "values": [
+            37.89,
+            37.75,
+            38.0
+          ]
+        }
+      },
+      {
+        "plugs_per_site": 10,
+        "charger_kw": 11.5,
+        "total_plugs": 770,
+        "total_mw": 8.855,
+        "seeds": [
+          7,
+          42,
+          123
+        ],
+        "served_pct": {
+          "mean": 95.81,
+          "min": 95.72,
+          "max": 95.95,
+          "values": [
+            95.72,
+            95.76,
+            95.95
+          ]
+        },
+        "sla_adherence_pct": {
+          "mean": 95.81,
+          "min": 95.72,
+          "max": 95.95,
+          "values": [
+            95.72,
+            95.76,
+            95.95
+          ]
+        },
+        "p90_wait_min": {
+          "mean": 6.487,
+          "min": 6.462,
+          "max": 6.537,
+          "values": [
+            6.462,
+            6.462,
+            6.537
+          ]
+        },
+        "cost_per_trip": {
+          "mean": 1.295,
+          "min": 1.2943,
+          "max": 1.2962,
+          "values": [
+            1.2962,
+            1.2945,
+            1.2943
+          ]
+        },
+        "charger_utilization_pct": {
+          "mean": 100.2667,
+          "min": 100.15,
+          "max": 100.36,
+          "values": [
+            100.36,
+            100.15,
+            100.29
+          ]
+        },
+        "fleet_battery_pct": {
+          "mean": 63.5833,
+          "min": 63.3,
+          "max": 64.04,
+          "values": [
+            63.3,
+            64.04,
+            63.41
+          ]
+        },
+        "deadhead_pct": {
+          "mean": 38.0733,
+          "min": 37.96,
+          "max": 38.15,
+          "values": [
+            38.11,
+            37.96,
+            38.15
+          ]
+        }
+      },
+      {
+        "plugs_per_site": 20,
+        "charger_kw": 5.75,
+        "total_plugs": 1540,
+        "total_mw": 8.855,
+        "seeds": [
+          7,
+          42,
+          123
+        ],
+        "served_pct": {
+          "mean": 95.1633,
+          "min": 95.11,
+          "max": 95.25,
+          "values": [
+            95.11,
+            95.13,
+            95.25
+          ]
+        },
+        "sla_adherence_pct": {
+          "mean": 95.1633,
+          "min": 95.11,
+          "max": 95.25,
+          "values": [
+            95.11,
+            95.13,
+            95.25
+          ]
+        },
+        "p90_wait_min": {
+          "mean": 6.88,
+          "min": 6.82,
+          "max": 6.998,
+          "values": [
+            6.822,
+            6.82,
+            6.998
+          ]
+        },
+        "cost_per_trip": {
+          "mean": 1.3097,
+          "min": 1.3092,
+          "max": 1.31,
+          "values": [
+            1.3099,
+            1.3092,
+            1.31
+          ]
+        },
+        "charger_utilization_pct": {
+          "mean": 101.5733,
+          "min": 101.51,
+          "max": 101.62,
+          "values": [
+            101.62,
+            101.51,
+            101.59
+          ]
+        },
+        "fleet_battery_pct": {
+          "mean": 64.77,
+          "min": 64.5,
+          "max": 65.04,
+          "values": [
+            64.77,
+            65.04,
+            64.5
+          ]
+        },
+        "deadhead_pct": {
+          "mean": 39.2333,
+          "min": 39.12,
+          "max": 39.44,
+          "values": [
+            39.12,
+            39.14,
+            39.44
+          ]
+        }
+      }
+    ]
+  },
+  "battery": {
+    "anchors": [
+      {
+        "label": "battery_small_N77_10p11kW_bat40",
+        "n_sites": 77,
+        "plugs_per_site": 10,
+        "charger_kw": 11.5,
+        "fleet_size": 4500,
+        "battery_kwh": 40.0,
+        "seeds": [
+          7,
+          42,
+          123
+        ],
+        "served_pct": {
+          "mean": 95.2,
+          "min": 95.08,
+          "max": 95.29,
+          "values": [
+            95.08,
+            95.23,
+            95.29
+          ]
+        },
+        "sla_adherence_pct": {
+          "mean": 95.2,
+          "min": 95.08,
+          "max": 95.29,
+          "values": [
+            95.08,
+            95.23,
+            95.29
+          ]
+        },
+        "p10_wait_min": {
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "values": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "median_wait_min": {
+          "mean": 2.4383,
+          "min": 2.4,
+          "max": 2.495,
+          "values": [
+            2.42,
+            2.4,
+            2.495
+          ]
+        },
+        "p90_wait_min": {
+          "mean": 6.972,
+          "min": 6.888,
+          "max": 7.045,
+          "values": [
+            6.983,
+            6.888,
+            7.045
+          ]
+        },
+        "cost_per_trip": {
+          "mean": 1.2565,
+          "min": 1.255,
+          "max": 1.2581,
+          "values": [
+            1.2581,
+            1.255,
+            1.2563
+          ]
+        },
+        "contribution_margin_per_trip": {
+          "mean": 11.9189,
+          "min": 11.9157,
+          "max": 11.9207,
+          "values": [
+            11.9203,
+            11.9157,
+            11.9207
+          ]
+        },
+        "utilization_pct": {
+          "mean": 60.3367,
+          "min": 60.21,
+          "max": 60.52,
+          "values": [
+            60.28,
+            60.52,
+            60.21
+          ]
+        },
+        "active_time_pct": {
+          "mean": null,
+          "min": null,
+          "max": null,
+          "values": []
+        },
+        "deadhead_pct": {
+          "mean": 39.6633,
+          "min": 39.48,
+          "max": 39.79,
+          "values": [
+            39.72,
+            39.48,
+            39.79
+          ]
+        },
+        "charger_utilization_pct": {
+          "mean": 99.9533,
+          "min": 99.91,
+          "max": 100.01,
+          "values": [
+            100.01,
+            99.91,
+            99.94
+          ]
+        },
+        "fleet_battery_pct": {
+          "mean": 49.54,
+          "min": 49.18,
+          "max": 49.93,
+          "values": [
+            49.18,
+            49.93,
+            49.51
+          ]
+        },
+        "trips_per_vehicle_per_day": {
+          "mean": 36.7167,
+          "min": 36.67,
+          "max": 36.75,
+          "values": [
+            36.67,
+            36.73,
+            36.75
+          ]
+        }
+      },
+      {
+        "label": "charger_slow_N77_10p11kW",
+        "n_sites": 77,
+        "plugs_per_site": 10,
+        "charger_kw": 11.5,
+        "fleet_size": 4500,
+        "battery_kwh": 75.0,
+        "seeds": [
+          7,
+          42,
+          123
+        ],
+        "served_pct": {
+          "mean": 95.81,
+          "min": 95.72,
+          "max": 95.95,
+          "values": [
+            95.72,
+            95.76,
+            95.95
+          ]
+        },
+        "sla_adherence_pct": {
+          "mean": 95.81,
+          "min": 95.72,
+          "max": 95.95,
+          "values": [
+            95.72,
+            95.76,
+            95.95
+          ]
+        },
+        "p10_wait_min": {
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "values": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "median_wait_min": {
+          "mean": 2.102,
+          "min": 2.073,
+          "max": 2.16,
+          "values": [
+            2.073,
+            2.073,
+            2.16
+          ]
+        },
+        "p90_wait_min": {
+          "mean": 6.487,
+          "min": 6.462,
+          "max": 6.537,
+          "values": [
+            6.462,
+            6.462,
+            6.537
+          ]
+        },
+        "cost_per_trip": {
+          "mean": 1.295,
+          "min": 1.2943,
+          "max": 1.2962,
+          "values": [
+            1.2962,
+            1.2945,
+            1.2943
+          ]
+        },
+        "contribution_margin_per_trip": {
+          "mean": 11.9151,
+          "min": 11.9049,
+          "max": 11.9232,
+          "values": [
+            11.9171,
+            11.9049,
+            11.9232
+          ]
+        },
+        "utilization_pct": {
+          "mean": 61.9267,
+          "min": 61.85,
+          "max": 62.04,
+          "values": [
+            61.89,
+            62.04,
+            61.85
+          ]
+        },
+        "active_time_pct": {
+          "mean": null,
+          "min": null,
+          "max": null,
+          "values": []
+        },
+        "deadhead_pct": {
+          "mean": 38.0733,
+          "min": 37.96,
+          "max": 38.15,
+          "values": [
+            38.11,
+            37.96,
+            38.15
+          ]
+        },
+        "charger_utilization_pct": {
+          "mean": 100.2667,
+          "min": 100.15,
+          "max": 100.36,
+          "values": [
+            100.36,
+            100.15,
+            100.29
+          ]
+        },
+        "fleet_battery_pct": {
+          "mean": 63.5833,
+          "min": 63.3,
+          "max": 64.04,
+          "values": [
+            63.3,
+            64.04,
+            63.41
+          ]
+        },
+        "trips_per_vehicle_per_day": {
+          "mean": 36.95,
+          "min": 36.92,
+          "max": 37.0,
+          "values": [
+            36.92,
+            36.93,
+            37.0
+          ]
+        }
+      }
+    ]
+  },
+  "battery_floor": {
+    "n77": [
+      {
+        "label": "bat77_15kWh",
+        "battery_kwh": 15.0,
+        "n_sites": 77,
+        "plugs_per_site": 10,
+        "charger_kw": 11.5,
+        "seeds": [
+          42,
+          7
+        ],
+        "served_pct": {
+          "mean": 89.54,
+          "min": 89.5,
+          "max": 89.58,
+          "values": [
+            89.5,
+            89.58
+          ]
+        },
+        "sla_adherence_pct": {
+          "mean": 89.54,
+          "min": 89.5,
+          "max": 89.58,
+          "values": [
+            89.5,
+            89.58
+          ]
+        },
+        "p90_wait_min": {
+          "mean": 7.6025,
+          "min": 7.523,
+          "max": 7.682,
+          "values": [
+            7.523,
+            7.682
+          ]
+        },
+        "median_wait_min": {
+          "mean": 2.546,
+          "min": 2.495,
+          "max": 2.597,
+          "values": [
+            2.495,
+            2.597
+          ]
+        },
+        "fleet_battery_pct": {
+          "mean": 45.175,
+          "min": 45.14,
+          "max": 45.21,
+          "values": [
+            45.14,
+            45.21
+          ]
+        },
+        "charger_utilization_pct": {
+          "mean": 98.885,
+          "min": 98.86,
+          "max": 98.91,
+          "values": [
+            98.86,
+            98.91
+          ]
+        },
+        "cost_per_trip": {
+          "mean": 1.295,
+          "min": 1.2944,
+          "max": 1.2956,
+          "values": [
+            1.2944,
+            1.2956
+          ]
+        },
+        "utilization_pct": {
+          "mean": 56.54,
+          "min": 56.36,
+          "max": 56.72,
+          "values": [
+            56.72,
+            56.36
+          ]
+        },
+        "deadhead_pct": {
+          "mean": 43.46,
+          "min": 43.28,
+          "max": 43.64,
+          "values": [
+            43.28,
+            43.64
+          ]
+        }
+      },
+      {
+        "label": "bat77_20kWh",
+        "battery_kwh": 20.0,
+        "n_sites": 77,
+        "plugs_per_site": 10,
+        "charger_kw": 11.5,
+        "seeds": [
+          42,
+          7
+        ],
+        "served_pct": {
+          "mean": 91.255,
+          "min": 91.19,
+          "max": 91.32,
+          "values": [
+            91.32,
+            91.19
+          ]
+        },
+        "sla_adherence_pct": {
+          "mean": 91.255,
+          "min": 91.19,
+          "max": 91.32,
+          "values": [
+            91.32,
+            91.19
+          ]
+        },
+        "p90_wait_min": {
+          "mean": 7.5285,
+          "min": 7.48,
+          "max": 7.577,
+          "values": [
+            7.48,
+            7.577
+          ]
+        },
+        "median_wait_min": {
+          "mean": 2.56,
+          "min": 2.515,
+          "max": 2.605,
+          "values": [
+            2.515,
+            2.605
+          ]
+        },
+        "fleet_battery_pct": {
+          "mean": 46.455,
+          "min": 45.86,
+          "max": 47.05,
+          "values": [
+            47.05,
+            45.86
+          ]
+        },
+        "charger_utilization_pct": {
+          "mean": 99.22,
+          "min": 99.21,
+          "max": 99.23,
+          "values": [
+            99.21,
+            99.23
+          ]
+        },
+        "cost_per_trip": {
+          "mean": 1.2755,
+          "min": 1.2734,
+          "max": 1.2777,
+          "values": [
+            1.2734,
+            1.2777
+          ]
+        },
+        "utilization_pct": {
+          "mean": 58.215,
+          "min": 57.95,
+          "max": 58.48,
+          "values": [
+            58.48,
+            57.95
+          ]
+        },
+        "deadhead_pct": {
+          "mean": 41.785,
+          "min": 41.52,
+          "max": 42.05,
+          "values": [
+            41.52,
+            42.05
+          ]
+        }
+      },
+      {
+        "label": "bat77_30kWh",
+        "battery_kwh": 30.0,
+        "n_sites": 77,
+        "plugs_per_site": 10,
+        "charger_kw": 11.5,
+        "seeds": [
+          42,
+          7
+        ],
+        "served_pct": {
+          "mean": 93.575,
+          "min": 93.53,
+          "max": 93.62,
+          "values": [
+            93.62,
+            93.53
+          ]
+        },
+        "sla_adherence_pct": {
+          "mean": 93.575,
+          "min": 93.53,
+          "max": 93.62,
+          "values": [
+            93.62,
+            93.53
+          ]
+        },
+        "p90_wait_min": {
+          "mean": 7.462,
+          "min": 7.44,
+          "max": 7.484,
+          "values": [
+            7.44,
+            7.484
+          ]
+        },
+        "median_wait_min": {
+          "mean": 2.665,
+          "min": 2.628,
+          "max": 2.702,
+          "values": [
+            2.628,
+            2.702
+          ]
+        },
+        "fleet_battery_pct": {
+          "mean": 46.985,
+          "min": 46.6,
+          "max": 47.37,
+          "values": [
+            47.37,
+            46.6
+          ]
+        },
+        "charger_utilization_pct": {
+          "mean": 99.55,
+          "min": 99.53,
+          "max": 99.57,
+          "values": [
+            99.53,
+            99.57
+          ]
+        },
+        "cost_per_trip": {
+          "mean": 1.2632,
+          "min": 1.262,
+          "max": 1.2645,
+          "values": [
+            1.262,
+            1.2645
+          ]
+        },
+        "utilization_pct": {
+          "mean": 58.97,
+          "min": 58.84,
+          "max": 59.1,
+          "values": [
+            59.1,
+            58.84
+          ]
+        },
+        "deadhead_pct": {
+          "mean": 41.03,
+          "min": 40.9,
+          "max": 41.16,
+          "values": [
+            40.9,
+            41.16
+          ]
+        }
+      },
+      {
+        "label": "battery_small_N77_10p11kW_bat40",
+        "battery_kwh": 40.0,
+        "n_sites": 77,
+        "plugs_per_site": 10,
+        "charger_kw": 11.5,
+        "seeds": [
+          123,
+          42,
+          7
+        ],
+        "served_pct": {
+          "mean": 95.2,
+          "min": 95.08,
+          "max": 95.29,
+          "values": [
+            95.08,
+            95.23,
+            95.29
+          ]
+        },
+        "sla_adherence_pct": {
+          "mean": 95.2,
+          "min": 95.08,
+          "max": 95.29,
+          "values": [
+            95.08,
+            95.23,
+            95.29
+          ]
+        },
+        "p90_wait_min": {
+          "mean": 6.972,
+          "min": 6.888,
+          "max": 7.045,
+          "values": [
+            6.983,
+            6.888,
+            7.045
+          ]
+        },
+        "median_wait_min": {
+          "mean": 2.4383,
+          "min": 2.4,
+          "max": 2.495,
+          "values": [
+            2.42,
+            2.4,
+            2.495
+          ]
+        },
+        "fleet_battery_pct": {
+          "mean": 49.54,
+          "min": 49.18,
+          "max": 49.93,
+          "values": [
+            49.18,
+            49.93,
+            49.51
+          ]
+        },
+        "charger_utilization_pct": {
+          "mean": 99.9533,
+          "min": 99.91,
+          "max": 100.01,
+          "values": [
+            100.01,
+            99.91,
+            99.94
+          ]
+        },
+        "cost_per_trip": {
+          "mean": 1.2565,
+          "min": 1.255,
+          "max": 1.2581,
+          "values": [
+            1.2581,
+            1.255,
+            1.2563
+          ]
+        },
+        "utilization_pct": {
+          "mean": 60.3367,
+          "min": 60.21,
+          "max": 60.52,
+          "values": [
+            60.28,
+            60.52,
+            60.21
+          ]
+        },
+        "deadhead_pct": {
+          "mean": 39.6633,
+          "min": 39.48,
+          "max": 39.79,
+          "values": [
+            39.72,
+            39.48,
+            39.79
+          ]
+        }
+      },
+      {
+        "label": "charger_slow_N77_10p11kW",
+        "battery_kwh": 75.0,
+        "n_sites": 77,
+        "plugs_per_site": 10,
+        "charger_kw": 11.5,
+        "seeds": [
+          123,
+          42,
+          7
+        ],
+        "served_pct": {
+          "mean": 95.81,
+          "min": 95.72,
+          "max": 95.95,
+          "values": [
+            95.72,
+            95.76,
+            95.95
+          ]
+        },
+        "sla_adherence_pct": {
+          "mean": 95.81,
+          "min": 95.72,
+          "max": 95.95,
+          "values": [
+            95.72,
+            95.76,
+            95.95
+          ]
+        },
+        "p90_wait_min": {
+          "mean": 6.487,
+          "min": 6.462,
+          "max": 6.537,
+          "values": [
+            6.462,
+            6.462,
+            6.537
+          ]
+        },
+        "median_wait_min": {
+          "mean": 2.102,
+          "min": 2.073,
+          "max": 2.16,
+          "values": [
+            2.073,
+            2.073,
+            2.16
+          ]
+        },
+        "fleet_battery_pct": {
+          "mean": 63.5833,
+          "min": 63.3,
+          "max": 64.04,
+          "values": [
+            63.3,
+            64.04,
+            63.41
+          ]
+        },
+        "charger_utilization_pct": {
+          "mean": 100.2667,
+          "min": 100.15,
+          "max": 100.36,
+          "values": [
+            100.36,
+            100.15,
+            100.29
+          ]
+        },
+        "cost_per_trip": {
+          "mean": 1.295,
+          "min": 1.2943,
+          "max": 1.2962,
+          "values": [
+            1.2962,
+            1.2945,
+            1.2943
+          ]
+        },
+        "utilization_pct": {
+          "mean": 61.9267,
+          "min": 61.85,
+          "max": 62.04,
+          "values": [
+            61.89,
+            62.04,
+            61.85
+          ]
+        },
+        "deadhead_pct": {
+          "mean": 38.0733,
+          "min": 37.96,
+          "max": 38.15,
+          "values": [
+            38.11,
+            37.96,
+            38.15
+          ]
+        }
+      }
+    ],
+    "n2": [
+      {
+        "label": "bat2_15kWh",
+        "battery_kwh": 15.0,
+        "n_sites": 2,
+        "plugs_per_site": 308,
+        "charger_kw": 20.0,
+        "seeds": [
+          42,
+          7
+        ],
+        "served_pct": {
+          "mean": 93.88,
+          "min": 93.86,
+          "max": 93.9,
+          "values": [
+            93.9,
+            93.86
+          ]
+        },
+        "sla_adherence_pct": {
+          "mean": 93.88,
+          "min": 93.86,
+          "max": 93.9,
+          "values": [
+            93.9,
+            93.86
+          ]
+        },
+        "p90_wait_min": {
+          "mean": 7.4645,
+          "min": 7.432,
+          "max": 7.497,
+          "values": [
+            7.432,
+            7.497
+          ]
+        },
+        "median_wait_min": {
+          "mean": 2.9605,
+          "min": 2.888,
+          "max": 3.033,
+          "values": [
+            2.888,
+            3.033
+          ]
+        },
+        "fleet_battery_pct": {
+          "mean": 65.91,
+          "min": 65.43,
+          "max": 66.39,
+          "values": [
+            66.39,
+            65.43
+          ]
+        },
+        "charger_utilization_pct": {
+          "mean": 63.99,
+          "min": 63.96,
+          "max": 64.02,
+          "values": [
+            63.96,
+            64.02
+          ]
+        },
+        "cost_per_trip": {
+          "mean": 1.0881,
+          "min": 1.0873,
+          "max": 1.0889,
+          "values": [
+            1.0873,
+            1.0889
+          ]
+        },
+        "utilization_pct": {
+          "mean": 66.935,
+          "min": 66.8,
+          "max": 67.07,
+          "values": [
+            67.07,
+            66.8
+          ]
+        },
+        "deadhead_pct": {
+          "mean": 33.065,
+          "min": 32.93,
+          "max": 33.2,
+          "values": [
+            32.93,
+            33.2
+          ]
+        }
+      },
+      {
+        "label": "bat2_20kWh",
+        "battery_kwh": 20.0,
+        "n_sites": 2,
+        "plugs_per_site": 308,
+        "charger_kw": 20.0,
+        "seeds": [
+          42,
+          7
+        ],
+        "served_pct": {
+          "mean": 93.855,
+          "min": 93.78,
+          "max": 93.93,
+          "values": [
+            93.93,
+            93.78
+          ]
+        },
+        "sla_adherence_pct": {
+          "mean": 93.855,
+          "min": 93.78,
+          "max": 93.93,
+          "values": [
+            93.93,
+            93.78
+          ]
+        },
+        "p90_wait_min": {
+          "mean": 7.4685,
+          "min": 7.43,
+          "max": 7.507,
+          "values": [
+            7.43,
+            7.507
+          ]
+        },
+        "median_wait_min": {
+          "mean": 2.9685,
+          "min": 2.892,
+          "max": 3.045,
+          "values": [
+            2.892,
+            3.045
+          ]
+        },
+        "fleet_battery_pct": {
+          "mean": 69.395,
+          "min": 69.0,
+          "max": 69.79,
+          "values": [
+            69.79,
+            69.0
+          ]
+        },
+        "charger_utilization_pct": {
+          "mean": 64.065,
+          "min": 64.06,
+          "max": 64.07,
+          "values": [
+            64.07,
+            64.06
+          ]
+        },
+        "cost_per_trip": {
+          "mean": 1.0958,
+          "min": 1.0945,
+          "max": 1.0971,
+          "values": [
+            1.0945,
+            1.0971
+          ]
+        },
+        "utilization_pct": {
+          "mean": 66.955,
+          "min": 66.8,
+          "max": 67.11,
+          "values": [
+            67.11,
+            66.8
+          ]
+        },
+        "deadhead_pct": {
+          "mean": 33.045,
+          "min": 32.89,
+          "max": 33.2,
+          "values": [
+            32.89,
+            33.2
+          ]
+        }
+      },
+      {
+        "label": "bat2_30kWh",
+        "battery_kwh": 30.0,
+        "n_sites": 2,
+        "plugs_per_site": 308,
+        "charger_kw": 20.0,
+        "seeds": [
+          42,
+          7
+        ],
+        "served_pct": {
+          "mean": 93.9,
+          "min": 93.9,
+          "max": 93.9,
+          "values": [
+            93.9,
+            93.9
+          ]
+        },
+        "sla_adherence_pct": {
+          "mean": 93.9,
+          "min": 93.9,
+          "max": 93.9,
+          "values": [
+            93.9,
+            93.9
+          ]
+        },
+        "p90_wait_min": {
+          "mean": 7.4715,
+          "min": 7.44,
+          "max": 7.503,
+          "values": [
+            7.44,
+            7.503
+          ]
+        },
+        "median_wait_min": {
+          "mean": 2.9695,
+          "min": 2.892,
+          "max": 3.047,
+          "values": [
+            2.892,
+            3.047
+          ]
+        },
+        "fleet_battery_pct": {
+          "mean": 72.97,
+          "min": 72.74,
+          "max": 73.2,
+          "values": [
+            73.2,
+            72.74
+          ]
+        },
+        "charger_utilization_pct": {
+          "mean": 64.13,
+          "min": 64.07,
+          "max": 64.19,
+          "values": [
+            64.07,
+            64.19
+          ]
+        },
+        "cost_per_trip": {
+          "mean": 1.1107,
+          "min": 1.11,
+          "max": 1.1115,
+          "values": [
+            1.11,
+            1.1115
+          ]
+        },
+        "utilization_pct": {
+          "mean": 66.925,
+          "min": 66.8,
+          "max": 67.05,
+          "values": [
+            67.05,
+            66.8
+          ]
+        },
+        "deadhead_pct": {
+          "mean": 33.075,
+          "min": 32.95,
+          "max": 33.2,
+          "values": [
+            32.95,
+            33.2
+          ]
+        }
+      },
+      {
+        "label": "bat2_40kWh",
+        "battery_kwh": 40.0,
+        "n_sites": 2,
+        "plugs_per_site": 308,
+        "charger_kw": 20.0,
+        "seeds": [
+          42,
+          7
+        ],
+        "served_pct": {
+          "mean": 93.905,
+          "min": 93.87,
+          "max": 93.94,
+          "values": [
+            93.94,
+            93.87
+          ]
+        },
+        "sla_adherence_pct": {
+          "mean": 93.905,
+          "min": 93.87,
+          "max": 93.94,
+          "values": [
+            93.94,
+            93.87
+          ]
+        },
+        "p90_wait_min": {
+          "mean": 7.473,
+          "min": 7.443,
+          "max": 7.503,
+          "values": [
+            7.443,
+            7.503
+          ]
+        },
+        "median_wait_min": {
+          "mean": 2.976,
+          "min": 2.9,
+          "max": 3.052,
+          "values": [
+            2.9,
+            3.052
+          ]
+        },
+        "fleet_battery_pct": {
+          "mean": 74.655,
+          "min": 74.43,
+          "max": 74.88,
+          "values": [
+            74.88,
+            74.43
+          ]
+        },
+        "charger_utilization_pct": {
+          "mean": 64.125,
+          "min": 64.1,
+          "max": 64.15,
+          "values": [
+            64.1,
+            64.15
+          ]
+        },
+        "cost_per_trip": {
+          "mean": 1.1259,
+          "min": 1.1249,
+          "max": 1.1268,
+          "values": [
+            1.1249,
+            1.1268
+          ]
+        },
+        "utilization_pct": {
+          "mean": 66.925,
+          "min": 66.81,
+          "max": 67.04,
+          "values": [
+            67.04,
+            66.81
+          ]
+        },
+        "deadhead_pct": {
+          "mean": 33.075,
+          "min": 32.96,
+          "max": 33.19,
+          "values": [
+            32.96,
+            33.19
+          ]
+        }
+      },
+      {
+        "label": "geo_N2_308p20kW",
+        "battery_kwh": 75.0,
+        "n_sites": 2,
+        "plugs_per_site": 308,
+        "charger_kw": 20.0,
+        "seeds": [
+          123,
+          42,
+          7
+        ],
+        "served_pct": {
+          "mean": 93.86,
+          "min": 93.83,
+          "max": 93.92,
+          "values": [
+            93.83,
+            93.92,
+            93.83
+          ]
+        },
+        "sla_adherence_pct": {
+          "mean": 93.86,
+          "min": 93.83,
+          "max": 93.92,
+          "values": [
+            93.83,
+            93.92,
+            93.83
+          ]
+        },
+        "p90_wait_min": {
+          "mean": 7.4687,
+          "min": 7.445,
+          "max": 7.508,
+          "values": [
+            7.445,
+            7.453,
+            7.508
+          ]
+        },
+        "median_wait_min": {
+          "mean": 2.954,
+          "min": 2.892,
+          "max": 3.052,
+          "values": [
+            2.918,
+            2.892,
+            3.052
+          ]
+        },
+        "fleet_battery_pct": {
+          "mean": 77.1667,
+          "min": 77.1,
+          "max": 77.25,
+          "values": [
+            77.15,
+            77.25,
+            77.1
+          ]
+        },
+        "charger_utilization_pct": {
+          "mean": 64.1667,
+          "min": 64.11,
+          "max": 64.26,
+          "values": [
+            64.26,
+            64.11,
+            64.13
+          ]
+        },
+        "cost_per_trip": {
+          "mean": 1.1794,
+          "min": 1.1782,
+          "max": 1.18,
+          "values": [
+            1.18,
+            1.1782,
+            1.18
+          ]
+        },
+        "utilization_pct": {
+          "mean": 66.9333,
+          "min": 66.79,
+          "max": 67.04,
+          "values": [
+            66.97,
+            67.04,
+            66.79
+          ]
+        },
+        "deadhead_pct": {
+          "mean": 33.0667,
+          "min": 32.96,
+          "max": 33.21,
+          "values": [
+            33.03,
+            32.96,
+            33.21
+          ]
+        }
+      }
+    ]
+  },
+  "pareto": {
+    "points": [
+      {
+        "label": "undersup_N20_20p20kW_f3000_b75",
+        "preset": "tesla",
+        "n_sites": 20,
+        "plugs_per_site": 20,
+        "charger_kw": 20.0,
+        "fleet_size": 3000,
+        "battery_kwh": 75.0,
+        "seed": 42,
+        "served_pct": 90.43,
+        "sla_adherence_pct": 90.43,
+        "p10_wait_min": 0.0,
+        "median_wait_min": 2.978,
+        "p90_wait_min": 7.712,
+        "cost_per_trip": 0.9397,
+        "cost_per_mile": 0.1319,
+        "contribution_margin_per_trip": 12.0286,
+        "system_margin_per_trip": 12.0286,
+        "avg_revenue_per_trip": 12.9683,
+        "utilization_pct": 66.31,
+        "deadhead_pct": 33.69,
+        "charger_utilization_pct": 95.46,
+        "fleet_battery_pct": 72.86
+      },
+      {
+        "label": "mega_N2_308p20kW_f4500_b75",
+        "preset": "tesla",
+        "n_sites": 2,
+        "plugs_per_site": 308,
+        "charger_kw": 20.0,
+        "fleet_size": 4500,
+        "battery_kwh": 75.0,
+        "seed": 42,
+        "served_pct": 93.92,
+        "sla_adherence_pct": 93.92,
+        "p10_wait_min": 0.0,
+        "median_wait_min": 2.892,
+        "p90_wait_min": 7.453,
+        "cost_per_trip": 1.1782,
+        "cost_per_mile": 0.1649,
+        "contribution_margin_per_trip": 11.9245,
+        "system_margin_per_trip": 11.9245,
+        "avg_revenue_per_trip": 13.1027,
+        "utilization_pct": 67.04,
+        "deadhead_pct": 32.96,
+        "charger_utilization_pct": 64.11,
+        "fleet_battery_pct": 77.25
+      },
+      {
+        "label": "midgeo_N20_31p20kW_f4500_b75",
+        "preset": "tesla",
+        "n_sites": 20,
+        "plugs_per_site": 31,
+        "charger_kw": 20.0,
+        "fleet_size": 4500,
+        "battery_kwh": 75.0,
+        "seed": 42,
+        "served_pct": 93.86,
+        "sla_adherence_pct": 93.86,
+        "p10_wait_min": 0.0,
+        "median_wait_min": 2.577,
+        "p90_wait_min": 7.127,
+        "cost_per_trip": 1.2055,
+        "cost_per_mile": 0.1694,
+        "contribution_margin_per_trip": 11.9827,
+        "system_margin_per_trip": 11.9827,
+        "avg_revenue_per_trip": 13.1882,
+        "utilization_pct": 67.81,
+        "deadhead_pct": 32.19,
+        "charger_utilization_pct": 65.33,
+        "fleet_battery_pct": 76.79
+      },
+      {
+        "label": "disp_med_N77_10p20kW_f4500_b75",
+        "preset": "tesla",
+        "n_sites": 77,
+        "plugs_per_site": 10,
+        "charger_kw": 20.0,
+        "fleet_size": 4500,
+        "battery_kwh": 75.0,
+        "seed": 42,
+        "served_pct": 95.49,
+        "sla_adherence_pct": 95.49,
+        "p10_wait_min": 0.0,
+        "median_wait_min": 2.642,
+        "p90_wait_min": 6.977,
+        "cost_per_trip": 1.283,
+        "cost_per_mile": 0.1814,
+        "contribution_margin_per_trip": 11.9431,
+        "system_margin_per_trip": 11.9431,
+        "avg_revenue_per_trip": 13.2261,
+        "utilization_pct": 68.61,
+        "deadhead_pct": 31.39,
+        "charger_utilization_pct": 52.34,
+        "fleet_battery_pct": 77.11
+      },
+      {
+        "label": "disp_slow_N77_10p11kW_f4500_b75",
+        "preset": "tesla",
+        "n_sites": 77,
+        "plugs_per_site": 10,
+        "charger_kw": 11.5,
+        "fleet_size": 4500,
+        "battery_kwh": 75.0,
+        "seed": 42,
+        "served_pct": 95.76,
+        "sla_adherence_pct": 95.76,
+        "p10_wait_min": 0.0,
+        "median_wait_min": 2.073,
+        "p90_wait_min": 6.462,
+        "cost_per_trip": 1.2945,
+        "cost_per_mile": 0.1658,
+        "contribution_margin_per_trip": 11.9049,
+        "system_margin_per_trip": 11.9049,
+        "avg_revenue_per_trip": 13.1994,
+        "utilization_pct": 62.04,
+        "deadhead_pct": 37.96,
+        "charger_utilization_pct": 100.15,
+        "fleet_battery_pct": 64.04
+      },
+      {
+        "label": "disp_cheap_N77_8p11kW_f4500_b40",
+        "preset": "tesla",
+        "n_sites": 77,
+        "plugs_per_site": 8,
+        "charger_kw": 11.5,
+        "fleet_size": 4500,
+        "battery_kwh": 40.0,
+        "seed": 42,
+        "served_pct": 86.14,
+        "sla_adherence_pct": 86.14,
+        "p10_wait_min": 0.0,
+        "median_wait_min": 2.617,
+        "p90_wait_min": 7.582,
+        "cost_per_trip": 1.32,
+        "cost_per_mile": 0.1781,
+        "contribution_margin_per_trip": 11.689,
+        "system_margin_per_trip": 11.689,
+        "avg_revenue_per_trip": 13.0089,
+        "utilization_pct": 63.99,
+        "deadhead_pct": 36.01,
+        "charger_utilization_pct": 100.09,
+        "fleet_battery_pct": 39.42
+      },
+      {
+        "label": "agg_fast_N20_10p150kW_f5000_b75",
+        "preset": "tesla",
+        "n_sites": 20,
+        "plugs_per_site": 10,
+        "charger_kw": 150.0,
+        "fleet_size": 5000,
+        "battery_kwh": 75.0,
+        "seed": 42,
+        "served_pct": 90.65,
+        "sla_adherence_pct": 90.65,
+        "p10_wait_min": 0.0,
+        "median_wait_min": 2.515,
+        "p90_wait_min": 7.167,
+        "cost_per_trip": 1.3606,
+        "cost_per_mile": 0.2202,
+        "contribution_margin_per_trip": 12.0583,
+        "system_margin_per_trip": 12.0583,
+        "avg_revenue_per_trip": 13.4189,
+        "utilization_pct": 80.03,
+        "deadhead_pct": 19.97,
+        "charger_utilization_pct": 19.88,
+        "fleet_battery_pct": 62.26
+      },
+      {
+        "label": "mid_fast_N50_10p75kW_f5000_b75",
+        "preset": "tesla",
+        "n_sites": 50,
+        "plugs_per_site": 10,
+        "charger_kw": 75.0,
+        "fleet_size": 5000,
+        "battery_kwh": 75.0,
+        "seed": 42,
+        "served_pct": 94.52,
+        "sla_adherence_pct": 94.52,
+        "p10_wait_min": 0.0,
+        "median_wait_min": 2.515,
+        "p90_wait_min": 6.948,
+        "cost_per_trip": 1.3972,
+        "cost_per_mile": 0.2183,
+        "contribution_margin_per_trip": 12.0133,
+        "system_margin_per_trip": 12.0133,
+        "avg_revenue_per_trip": 13.4105,
+        "utilization_pct": 77.18,
+        "deadhead_pct": 22.82,
+        "charger_utilization_pct": 18.46,
+        "fleet_battery_pct": 70.63
+      },
+      {
+        "label": "ultracheap_N77_5p11kW_f4500_b75",
+        "preset": "tesla",
+        "n_sites": 77,
+        "plugs_per_site": 5,
+        "charger_kw": 11.5,
+        "fleet_size": 4500,
+        "battery_kwh": 75.0,
+        "seed": 42,
+        "served_pct": 79.28,
+        "sla_adherence_pct": 79.28,
+        "p10_wait_min": 0.0,
+        "median_wait_min": 2.518,
+        "p90_wait_min": 7.597,
+        "cost_per_trip": 1.4333,
+        "cost_per_mile": 0.21,
+        "contribution_margin_per_trip": 11.6555,
+        "system_margin_per_trip": 11.6555,
+        "avg_revenue_per_trip": 13.0888,
+        "utilization_pct": 70.04,
+        "deadhead_pct": 29.96,
+        "charger_utilization_pct": 101.75,
+        "fleet_battery_pct": 28.28
+      },
+      {
+        "label": "oversup_slow_N77_10p11kW_f5500_b75",
+        "preset": "tesla",
+        "n_sites": 77,
+        "plugs_per_site": 10,
+        "charger_kw": 11.5,
+        "fleet_size": 5500,
+        "battery_kwh": 75.0,
+        "seed": 42,
+        "served_pct": 96.06,
+        "sla_adherence_pct": 96.06,
+        "p10_wait_min": 0.0,
+        "median_wait_min": 0.0,
+        "p90_wait_min": 6.13,
+        "cost_per_trip": 1.471,
+        "cost_per_mile": 0.1885,
+        "contribution_margin_per_trip": 11.7596,
+        "system_margin_per_trip": 11.7596,
+        "avg_revenue_per_trip": 13.2306,
+        "utilization_pct": 62.28,
+        "deadhead_pct": 37.72,
+        "charger_utilization_pct": 100.27,
+        "fleet_battery_pct": 63.93
+      },
+      {
+        "label": "undersup_N20_20p20kW_f3000_b75",
+        "preset": "waymo",
+        "n_sites": 20,
+        "plugs_per_site": 20,
+        "charger_kw": 20.0,
+        "fleet_size": 3000,
+        "battery_kwh": 75.0,
+        "seed": 42,
+        "served_pct": 73.99,
+        "sla_adherence_pct": 73.99,
+        "p10_wait_min": 0.015,
+        "median_wait_min": 2.548,
+        "p90_wait_min": 7.977,
+        "cost_per_trip": 1.8529,
+        "cost_per_mile": 0.2939,
+        "contribution_margin_per_trip": 11.0923,
+        "system_margin_per_trip": 11.0923,
+        "avg_revenue_per_trip": 12.9451,
+        "utilization_pct": 74.74,
+        "deadhead_pct": 25.26,
+        "charger_utilization_pct": 99.71,
+        "fleet_battery_pct": 46.54
+      },
+      {
+        "label": "midgeo_N20_31p20kW_f4500_b75",
+        "preset": "waymo",
+        "n_sites": 20,
+        "plugs_per_site": 31,
+        "charger_kw": 20.0,
+        "fleet_size": 4500,
+        "battery_kwh": 75.0,
+        "seed": 42,
+        "served_pct": 95.84,
+        "sla_adherence_pct": 95.84,
+        "p10_wait_min": 0.0,
+        "median_wait_min": 2.352,
+        "p90_wait_min": 6.98,
+        "cost_per_trip": 2.135,
+        "cost_per_mile": 0.2906,
+        "contribution_margin_per_trip": 11.1134,
+        "system_margin_per_trip": 11.1134,
+        "avg_revenue_per_trip": 13.2484,
+        "utilization_pct": 66.23,
+        "deadhead_pct": 33.77,
+        "charger_utilization_pct": 99.64,
+        "fleet_battery_pct": 62.41
+      },
+      {
+        "label": "mega_N2_308p20kW_f4500_b75",
+        "preset": "waymo",
+        "n_sites": 2,
+        "plugs_per_site": 308,
+        "charger_kw": 20.0,
+        "fleet_size": 4500,
+        "battery_kwh": 75.0,
+        "seed": 42,
+        "served_pct": 92.58,
+        "sla_adherence_pct": 92.58,
+        "p10_wait_min": 0.0,
+        "median_wait_min": 2.862,
+        "p90_wait_min": 7.415,
+        "cost_per_trip": 2.1555,
+        "cost_per_mile": 0.2981,
+        "contribution_margin_per_trip": 10.809,
+        "system_margin_per_trip": 10.809,
+        "avg_revenue_per_trip": 12.9644,
+        "utilization_pct": 65.33,
+        "deadhead_pct": 34.67,
+        "charger_utilization_pct": 96.39,
+        "fleet_battery_pct": 75.58
+      },
+      {
+        "label": "disp_med_N77_10p20kW_f4500_b75",
+        "preset": "waymo",
+        "n_sites": 77,
+        "plugs_per_site": 10,
+        "charger_kw": 20.0,
+        "fleet_size": 4500,
+        "battery_kwh": 75.0,
+        "seed": 42,
+        "served_pct": 95.27,
+        "sla_adherence_pct": 95.27,
+        "p10_wait_min": 0.0,
+        "median_wait_min": 2.137,
+        "p90_wait_min": 6.415,
+        "cost_per_trip": 2.2846,
+        "cost_per_mile": 0.2861,
+        "contribution_margin_per_trip": 10.8586,
+        "system_margin_per_trip": 10.8586,
+        "avg_revenue_per_trip": 13.1432,
+        "utilization_pct": 60.31,
+        "deadhead_pct": 39.69,
+        "charger_utilization_pct": 93.04,
+        "fleet_battery_pct": 74.23
+      },
+      {
+        "label": "agg_fast_N20_10p150kW_f5000_b75",
+        "preset": "waymo",
+        "n_sites": 20,
+        "plugs_per_site": 10,
+        "charger_kw": 150.0,
+        "fleet_size": 5000,
+        "battery_kwh": 75.0,
+        "seed": 42,
+        "served_pct": 92.05,
+        "sla_adherence_pct": 92.05,
+        "p10_wait_min": 0.0,
+        "median_wait_min": 2.49,
+        "p90_wait_min": 7.062,
+        "cost_per_trip": 2.3745,
+        "cost_per_mile": 0.3779,
+        "contribution_margin_per_trip": 11.0322,
+        "system_margin_per_trip": 11.0322,
+        "avg_revenue_per_trip": 13.4067,
+        "utilization_pct": 78.59,
+        "deadhead_pct": 21.41,
+        "charger_utilization_pct": 32.48,
+        "fleet_battery_pct": 61.92
+      },
+      {
+        "label": "mid_fast_N50_10p75kW_f5000_b75",
+        "preset": "waymo",
+        "n_sites": 50,
+        "plugs_per_site": 10,
+        "charger_kw": 75.0,
+        "fleet_size": 5000,
+        "battery_kwh": 75.0,
+        "seed": 42,
+        "served_pct": 95.87,
+        "sla_adherence_pct": 95.87,
+        "p10_wait_min": 0.0,
+        "median_wait_min": 2.49,
+        "p90_wait_min": 6.863,
+        "cost_per_trip": 2.388,
+        "cost_per_mile": 0.3636,
+        "contribution_margin_per_trip": 11.0061,
+        "system_margin_per_trip": 11.0061,
+        "avg_revenue_per_trip": 13.3941,
+        "utilization_pct": 75.08,
+        "deadhead_pct": 24.92,
+        "charger_utilization_pct": 29.53,
+        "fleet_battery_pct": 70.46
+      },
+      {
+        "label": "disp_slow_N77_10p11kW_f4500_b75",
+        "preset": "waymo",
+        "n_sites": 77,
+        "plugs_per_site": 10,
+        "charger_kw": 11.5,
+        "fleet_size": 4500,
+        "battery_kwh": 75.0,
+        "seed": 42,
+        "served_pct": 80.75,
+        "sla_adherence_pct": 80.75,
+        "p10_wait_min": 0.0,
+        "median_wait_min": 2.505,
+        "p90_wait_min": 7.543,
+        "cost_per_trip": 2.5103,
+        "cost_per_mile": 0.3541,
+        "contribution_margin_per_trip": 10.5079,
+        "system_margin_per_trip": 10.5079,
+        "avg_revenue_per_trip": 13.0182,
+        "utilization_pct": 66.96,
+        "deadhead_pct": 33.04,
+        "charger_utilization_pct": 101.9,
+        "fleet_battery_pct": 33.98
+      },
+      {
+        "label": "oversup_slow_N77_10p11kW_f5500_b75",
+        "preset": "waymo",
+        "n_sites": 77,
+        "plugs_per_site": 10,
+        "charger_kw": 11.5,
+        "fleet_size": 5500,
+        "battery_kwh": 75.0,
+        "seed": 42,
+        "served_pct": 84.32,
+        "sla_adherence_pct": 84.32,
+        "p10_wait_min": 0.0,
+        "median_wait_min": 2.308,
+        "p90_wait_min": 7.305,
+        "cost_per_trip": 2.8251,
+        "cost_per_mile": 0.3921,
+        "contribution_margin_per_trip": 10.2385,
+        "system_margin_per_trip": 10.2385,
+        "avg_revenue_per_trip": 13.0636,
+        "utilization_pct": 66.2,
+        "deadhead_pct": 33.8,
+        "charger_utilization_pct": 101.77,
+        "fleet_battery_pct": 30.42
+      },
+      {
+        "label": "disp_cheap_N77_8p11kW_f4500_b40",
+        "preset": "waymo",
+        "n_sites": 77,
+        "plugs_per_site": 8,
+        "charger_kw": 11.5,
+        "fleet_size": 4500,
+        "battery_kwh": 40.0,
+        "seed": 42,
+        "served_pct": 61.64,
+        "sla_adherence_pct": 61.64,
+        "p10_wait_min": 0.0,
+        "median_wait_min": 2.202,
+        "p90_wait_min": 7.847,
+        "cost_per_trip": 3.0398,
+        "cost_per_mile": 0.4327,
+        "contribution_margin_per_trip": 10.0313,
+        "system_margin_per_trip": 10.0313,
+        "avg_revenue_per_trip": 13.0711,
+        "utilization_pct": 67.79,
+        "deadhead_pct": 32.21,
+        "charger_utilization_pct": 100.59,
+        "fleet_battery_pct": 24.6
+      },
+      {
+        "label": "ultracheap_N77_5p11kW_f4500_b75",
+        "preset": "waymo",
+        "n_sites": 77,
+        "plugs_per_site": 5,
+        "charger_kw": 11.5,
+        "fleet_size": 4500,
+        "battery_kwh": 75.0,
+        "seed": 42,
+        "served_pct": 55.24,
+        "sla_adherence_pct": 55.24,
+        "p10_wait_min": 0.0,
+        "median_wait_min": 2.222,
+        "p90_wait_min": 7.535,
+        "cost_per_trip": 3.3761,
+        "cost_per_mile": 0.5166,
+        "contribution_margin_per_trip": 9.7705,
+        "system_margin_per_trip": 9.7705,
+        "avg_revenue_per_trip": 13.1465,
+        "utilization_pct": 73.39,
+        "deadhead_pct": 26.61,
+        "charger_utilization_pct": 101.91,
+        "fleet_battery_pct": 21.48
+      }
+    ]
+  },
+  "congestion": {
+    "config": {
+      "n_depots": 2,
+      "num_days": 3,
+      "demand_scale": 0.2,
+      "fleet": 4000,
+      "plugs_per_site": 308,
+      "charger_kw": 20.0,
+      "charging_queue_policy": "fifo",
+      "multipliers": [
+        1.0,
+        1.5,
+        2.0,
+        2.5,
+        3.0
+      ]
+    },
+    "points": [
+      {
+        "osrm_time_multiplier": 1.0,
+        "trips": 520674,
+        "served_pct": 92.83,
+        "sla_adherence_pct": 92.83,
+        "median_wait_min": 3.055,
+        "p90_wait_min": 7.55,
+        "contribution_margin_per_trip": 11.9777,
+        "charger_utilization_pct": 63.09,
+        "deadhead_pct": 32.84,
+        "repositioning_pct": 0.12,
+        "fleet_battery_pct": 76.83,
+        "served_pct_d1_d3": [
+          92.38,
+          93.05,
+          93.06
+        ]
+      },
+      {
+        "osrm_time_multiplier": 1.5,
+        "trips": 520674,
+        "served_pct": 85.18,
+        "sla_adherence_pct": 85.18,
+        "median_wait_min": 3.967,
+        "p90_wait_min": 8.652,
+        "contribution_margin_per_trip": 13.3362,
+        "charger_utilization_pct": 55.21,
+        "deadhead_pct": 28.24,
+        "repositioning_pct": 0.01,
+        "fleet_battery_pct": 76.48,
+        "served_pct_d1_d3": [
+          83.96,
+          85.72,
+          85.87
+        ]
+      },
+      {
+        "osrm_time_multiplier": 2.0,
+        "trips": 520674,
+        "served_pct": 74.39,
+        "sla_adherence_pct": 74.39,
+        "median_wait_min": 3.083,
+        "p90_wait_min": 8.42,
+        "contribution_margin_per_trip": 14.8072,
+        "charger_utilization_pct": 47.47,
+        "deadhead_pct": 24.01,
+        "repositioning_pct": 0.0,
+        "fleet_battery_pct": 75.61,
+        "served_pct_d1_d3": [
+          72.02,
+          75.51,
+          75.62
+        ]
+      },
+      {
+        "osrm_time_multiplier": 2.5,
+        "trips": 520674,
+        "served_pct": 66.4,
+        "sla_adherence_pct": 66.4,
+        "median_wait_min": 1.471,
+        "p90_wait_min": 8.609,
+        "contribution_margin_per_trip": 16.4018,
+        "charger_utilization_pct": 42.23,
+        "deadhead_pct": 22.16,
+        "repositioning_pct": 0.0,
+        "fleet_battery_pct": 75.01,
+        "served_pct_d1_d3": [
+          63.63,
+          67.67,
+          67.89
+        ]
+      },
+      {
+        "osrm_time_multiplier": 3.0,
+        "trips": 520674,
+        "served_pct": 59.45,
+        "sla_adherence_pct": 59.45,
+        "median_wait_min": 0.935,
+        "p90_wait_min": 8.504,
+        "contribution_margin_per_trip": 18.0159,
+        "charger_utilization_pct": 37.59,
+        "deadhead_pct": 20.24,
+        "repositioning_pct": 0.0,
+        "fleet_battery_pct": 74.87,
+        "served_pct_d1_d3": [
+          56.49,
+          60.8,
+          61.07
+        ]
+      }
+    ]
+  }
+}

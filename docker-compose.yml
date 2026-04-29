@@ -1,0 +1,29 @@
+services:
+  osrm:
+    image: osrm/osrm-backend:latest
+    platform: linux/amd64
+    volumes:
+      - ./osrm/data:/data
+      - ./osrm/entrypoint.sh:/entrypoint.sh
+    entrypoint: ["/bin/bash", "/entrypoint.sh"]
+    ports:
+      - "5001:5000"
+    logging:
+      driver: "none"
+
+  api:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./data:/data
+      - ./backend/app:/app/app
+    environment:
+      - OSRM_URL=http://osrm:5000
+      - TRAVEL_CACHE_PATH=/data/h3_travel_cache.parquet
+      - REQUESTS_PATH=/data/requests_austin_h3_r8.parquet
+    depends_on:
+      - osrm
+    restart: on-failure

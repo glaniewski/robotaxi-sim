@@ -1,0 +1,75 @@
+{
+  "seed": 123,
+  "duration_minutes": 4320,
+  "fleet": {
+    "size": 200,
+    "battery_kwh": 75,
+    "kwh_per_mile": 0.20,
+    "soc_initial": 0.80,
+    "soc_min": 0.20,
+    "soc_charge_start": 0.80,
+    "soc_target": 0.80,
+    "soc_buffer": 0.05
+  },
+  "depots": [
+    {
+      "id": "depot_1",
+      "h3_cell": "88489e3467fffff",
+      "chargers_count": 20,
+      "charger_kw": 150,
+      "site_power_kw": 1500
+    }
+  ],
+  "demand": {
+    "max_wait_time_seconds": 600,
+    "day_offset_seconds": 0,
+    "demand_scale": 0.02,
+    "repeat_num_days": 3,
+    "duration_minutes_per_day": 1440
+  },
+  "demand_control": {
+    "flex_pct": 0.0,
+    "flex_minutes": 10,
+    "pool_pct": 0.0,
+    "max_detour_pct": 0.15,
+    "prebook_pct": 0.0,
+    "eta_threshold_minutes": 10,
+    "prebook_shift_minutes": 10,
+    "offpeak_shift_pct": 0.0
+  },
+  "repositioning": {
+    "reposition_enabled": true,
+    "reposition_alpha": 0.6,
+    "reposition_half_life_minutes": 45,
+    "reposition_forecast_horizon_minutes": 30,
+    "max_reposition_travel_minutes": 12,
+    "max_vehicles_targeting_cell": 3,
+    "reposition_min_idle_minutes": 2,
+    "reposition_top_k_cells": 50,
+    "reposition_lambda": 0.05
+  },
+  "economics": {
+    "electricity_cost_per_kwh": 0.068,
+    "demand_charge_per_kw_month": 13.56,
+    "maintenance_cost_per_mile": 0.03,
+    "insurance_cost_per_vehicle_day": 4.00,
+    "teleops_cost_per_vehicle_day": 3.50,
+    "cleaning_cost_per_vehicle_day": 6.00,
+    "base_vehicle_cost_usd": 22500,
+    "battery_cost_per_kwh": 100,
+    "vehicle_cost_usd": 30000,
+    "vehicle_lifespan_years": 5,
+    "cost_per_site_day": 250.0,
+    "revenue_base": 2.50,
+    "revenue_per_mile": 1.50,
+    "revenue_per_minute": 0.35,
+    "revenue_min_fare": 5.00,
+    "pool_discount_pct": 0.25
+  },
+  "h3": { "resolution": 8 },
+  "timeseries_bucket_minutes": 1,
+  "charging_queue_policy": "jit",
+  "charging_depot_selection": "fastest",
+  "charging_depot_balance_slack_minutes": 3.0,
+  "min_plug_duration_minutes": 0.0
+}

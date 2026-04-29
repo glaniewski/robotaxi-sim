@@ -1,0 +1,391 @@
+---
+layout: ../../layouts/Post.astro
+title: "Four counterintuitive findings from simulating an Austin robotaxi fleet"
+subtitle: "An Austin Robotaxi Simulator — discrete-event fleet modeling and infrastructure tradeoffs."
+author: "Gabriel Laniewski"
+date: "April 2026"
+readingTimeMinutes: 9
+description: "Four counterintuitive findings from an Austin Robotaxi Simulator: fleet sizing has a sharp knee, charger placement beats charger count, slow chargers win, and battery floor depends entirely on depot density."
+---
+
+import Figure from "../../components/Figure.astro";
+import Callout from "../../components/Callout.astro";
+import FleetSweepCurve from "../../components/charts/FleetSweepCurve.tsx";
+import FleetEconomicsCurve from "../../components/charts/FleetEconomicsCurve.tsx";
+import ChargerPlugSweep from "../../components/charts/ChargerPlugSweep.tsx";
+import BatteryFloorChart from "../../components/charts/BatteryFloorChart.tsx";
+import CongestionCapacityTax from "../../components/charts/CongestionCapacityTax.tsx";
+
+Autonomous vehicle deployments are scaling. Commercial robotaxi services now
+operate in multiple cities, and as they grow, the engineering questions shift
+from "does the vehicle work?" to "how do you operate a fleet of them
+efficiently?" Fleet size, depot placement, charger tier, and battery capacity
+all interact in ways that aren't obvious from first principles — and they're
+expensive to get wrong. Running a controlled test on depot geography across a
+live city fleet is possible in principle, but requires operating two parallel
+infrastructure configurations simultaneously — slow and costly to iterate on.
+
+Simulation is a reasonable alternative. I built a discrete-event simulator for
+an Austin-scale robotaxi service to explore these infrastructure and operational
+tradeoffs systematically. It runs ~867,000 historical RideAustin trips collapsed
+into a representative 24-hour demand profile, dispatches a fleet of AVs through
+OSRM-backed travel times, and tracks vehicles through pickup, drop-off,
+repositioning, and charging at configurable depot sites.<sup><a href="#method-note">1</a></sup>
+
+Four findings held up consistently across configurations: fleet sizing has a sharp
+knee, charger placement matters more than charger count, plug availability matters
+more than charger speed, and battery requirements are driven by depot density.
+
+<Figure
+  caption="Animated overview: 3-day run, fleet=4500, N=77 microsites, demand_scale=0.2. 95.8% served. 10 plugs × 11.5 kW per site. ~300 sampled vehicles."
+  source="scripts/dashboard.py (TripsLayer + ArcLayer + ScatterplotLayer via deck.gl)"
+  extraWide
+>
+  <iframe
+    src="/sim/visualize_hero_N77_seed42.html"
+    title="Austin robotaxi sim overview"
+    loading="lazy"
+    class="h-[900px] w-full rounded-md"
+    style="border: 0;"
+  ></iframe>
+</Figure>
+
+<p id="method-note" className="text-xs leading-relaxed text-[color:var(--color-muted)]">
+  <sup>1</sup> The simulator runs on a 3-day continuous clock because single-day
+  runs start with fully charged vehicles in clean initial positions, which can
+  overstate service levels. Metrics are taken from day 3 after the fleet has
+  completed multiple charge cycles. Spatial indexing uses H3 resolution 8:
+  cells are about 0.74 km² (~460 m average edge length). The cell grid exists
+  primarily to make travel-time computation tractable: OSRM times are cached at
+  cell-centroid resolution rather than computed per-request. H3 resolution 8 keeps
+  cached travel times within a couple of minutes of point-to-point OSRM times
+  while keeping the matrix small enough to compute. Coarser cells lose that
+  travel-time fidelity; finer ones increase cache size with diminishing accuracy gains.
+  Dispatch works as follows: when a trip request arrives, idle and repositioning
+  vehicles within the max wait radius become eligible candidates; the dispatcher
+  assigns the nearest one by OSRM travel time and preempts any active repositioning.
+  Between trips, vehicles reposition toward high-demand or under-covered cells using
+  an alpha-blend heuristic, capped at 12 minutes of travel.
+</p>
+
+<Callout tone="caveat" label="A methodology caveat">
+  The cost model is fully itemized. **Revenue** follows current ride-hail pricing:
+  $2.50 base + $1.50/mi + $0.35/min, $5.00 minimum, with a 25% discount for
+  pooled riders. **Variable costs** are energy ($0.068/kWh × 0.20 kWh/mi ≈ $0.014/mi)
+  and maintenance ($0.03/mi). **Fixed costs per vehicle** are depreciation ($30,000
+  amortized over 5 years = $16.44/vehicle/day), insurance ($4.00), teleops at a
+  1:40 human-to-vehicle ratio ($3.50), and cleaning ($6.00) — $29.94/vehicle/day
+  in total. **Infrastructure** costs $250/site/day for depot operations plus plug
+  amortization on a 10-year straight line: $0.78/plug/day for 11.5 kW L2 posts,
+  up to $17.12/plug/day for 150 kW DC fast chargers. Grid demand charges are
+  $13.56/kW/month on total installed capacity.
+
+  Read the figures as _per-trip operating margin, fully loaded with fleet
+  depreciation_, not as a company P&L. The depot, charger, and battery findings
+  are driven by service quality metrics rather than cost assumptions, so the
+  operational conclusions hold even if the absolute cost numbers shift.
+</Callout>
+
+## 1. Fleet sizing has a knee, and it's lower than you'd think
+
+At what fleet size does a 95%-served target become achievable, and what does it
+cost to go further? (Served% is the fraction of incoming trip requests that are
+matched to a vehicle and completed — requests that time out or find no eligible
+car within the max wait radius count as unserved.)
+
+<FleetSweepCurve client:only="react" mode="service" height={340} />
+
+<Callout tone="takeaway">
+  **Doubling the fleet from 1,500 to 3,000 lifts served demand from 63% to 90% —
+  +27 points.** Going from 3,000 to 5,500 adds another +7. The 95% served threshold
+  hits at ~4,000 cars. Above that, each additional vehicle completes fewer trips per
+  day (37 at fleet=4,500 vs. 52 at fleet=3,000). The served% gain slows to a
+  fraction of a point per 500 cars while depreciation cost per trip keeps rising.
+</Callout>
+
+Below the knee, fleet size is the primary constraint and every car is a direct
+revenue unit. Above it, demand is effectively fixed and additional vehicles buy
+coverage buffer rather than proportionally more completed trips. Trips per
+vehicle per day fall from ~52 at fleet=3,000 to ~39 at fleet=4,250 and ~31 at
+fleet=5,500. Going from fleet=4,250 to 5,500, total fleet depreciation rises 29%
+($70k → $90k/day) while completed trips rise just 1% — each of the ~1,600
+incremental trips/day carries roughly $12.55 in additional depreciation.
+
+The green dashed line shows `active_time_pct` — the fraction of clock time each
+vehicle is doing anything (in trip, deadheading, repositioning, or charging) rather
+than sitting idle. It falls as the fleet grows past the knee, confirming that
+vehicles are simply waiting longer between dispatches above the 95% threshold.
+
+<FleetEconomicsCurve client:only="react" height={320} />
+
+The blue line is per-vehicle daily contribution — gross revenue minus all
+operating costs, including depreciation, insurance, teleops, and cleaning.
+It falls monotonically as supply outgrows demand. The orange line is total
+system contribution — and it peaks. Above fleet≈4,500 the curve turns down:
+each new vehicle captures so few incremental trips that its fully-loaded costs
+outweigh the revenue it adds. The marginal vehicle past that point is a net
+drag on system economics.
+
+The cheapest path to the 95% served target may not be more vehicles — it may be
+charger locations, depot placement, or a revised coverage boundary. The knee
+location is specific to the charger configuration tested here: 77 sites, 10 plugs
+each at 11.5 kW. A denser or sparser charger network would shift it.
+
+<FleetSweepCurve client:only="react" mode="wait" height={300} />
+
+The wait-time chart shows the same pattern from a different angle. Median wait
+stabilizes around 3 minutes well before the fleet saturates. What stays elevated
+under supply shortage is the p90 — the worst-case 10% of pickups. That gap
+between median and p90 is what the extra vehicles above the knee are buying, and
+it narrows slowly.
+
+## 2. Charger placement matters more than charger count
+
+That setup — charger locations as a lever — is exactly what this section tests.
+I held total installed charging capacity constant at ~12 MW and varied only
+_where_ it lived: 2 mega-depots in central Austin, 5 large depots, 20 medium
+ones, or 77 small microsites spread across the full trip-origin footprint. Same
+fleet (4,500 cars), same demand, same 3-day clock.
+
+<Figure
+  caption="Depot placement for all four equal-power geography configs: 2 mega depots, 5 large depots, 20 medium depots, and 77 small depots. Each layer can be toggled on the map."
+  source="scripts/map_blog_depot_configs.py (Folium)"
+  wide
+>
+  <iframe
+    src="/sim/blog_depot_configs_map.html"
+    title="Depot placement configurations in Austin"
+    loading="lazy"
+    class="h-[560px] w-full rounded-md"
+    style="border: 0;"
+  ></iframe>
+</Figure>
+
+| Configuration | Served% | Charger util% | Deadhead% | p90 wait |
+|---|---|---|---|---|
+| N=2 mega-depots | 93.9% | 64.2% | 33.1% | 7.5 min |
+| N=5 large depots | **81.7%** | **54.7%** | **28.7%** | 7.0 min |
+| N=20 medium depots | 93.6% | 65.2% | 32.3% | 7.2 min |
+| N=77 microsites | 95.1% | 71.8% | 36.8% | 7.0 min |
+
+<Callout tone="takeaway">
+  **Dispersed (N=77, 95.1%) and ultra-concentrated at peak demand (N=2, 93.9%)
+  both work. The _intermediate_ N=5 setup served only 81.7% — worse than either
+  extreme.** Placement beats count. Either cover the full demand footprint, or
+  co-locate with the top-1% densest cells; pick 5 mediocre sites and you get the
+  worst of both worlds.
+</Callout>
+
+The N=5 failure mode is the useful part. If five depots don't line up with the
+top demand cells _or_ the full city footprint, the fleet gets both demand
+pockets that are hard to reach and charger capacity that sits in the wrong
+places. A dispersed N=77 plan reduces this risk through coverage; an N=2 plan
+concentrates capacity exactly where the trip origins are densest. N=5 does
+neither.
+
+Each extreme has a practical limitation. The N=2 design works in the model
+because the two depots sit in downtown demand hotspots, but that assumes you can
+secure large charging sites in the most land-constrained part of the city. The
+N=77 design spreads charging closer to neighborhoods, but many small sites add
+permitting, maintenance, networking, and operations overhead.
+
+The dispatcher always assigns the nearest available vehicle to each trip request.
+With depots in the wrong locations, vehicles cluster near those depots and the
+nearest available car for trips elsewhere is simply far away — no dispatcher
+logic compensates for that.
+
+The data rules out a congestion explanation for N=5's failure. Charger
+utilization is actually the lowest of any configuration (54.7% vs. 64–72% for
+the others) — the plugs aren't saturating. Deadhead% is also the lowest
+(28.7%), so vehicles aren't logging extra miles searching for chargers. The
+simpler explanation fits: the 5 depots are neither concentrated in the top
+demand hotspots nor spread across the full city footprint. Coverage holes form
+in the areas between them, and trips in those zones time out before a vehicle
+can reach them.
+
+## 3. Plug availability matters more than charger speed
+
+With N=77 depots as the baseline, the next question is what charger
+configuration within each site actually matters. A common assumption: higher-kW
+chargers mean vehicles spend less time plugged in and return to service faster.
+The right way to test this is an **iso-power sweep**: fix total installed
+capacity constant at ~8.9 MW across all 77 sites and vary only how that power
+is split between plug count and per-plug speed — from 1 plug at 115 kW per
+site all the way to 20 plugs at 5.75 kW each. Fleet size, depot geography,
+battery, and demand are all held fixed.
+
+<ChargerPlugSweep client:only="react" height={360} />
+
+<Callout tone="takeaway">
+  **The curve peaks at 4 plugs per site (96.1% served), then declines gradually
+  to 95.2% at 20 plugs — all at identical total installed power. The single
+  115 kW slot per site is the worst config at 92.3%, nearly 4 points below the
+  peak, despite having the fastest chargers.**
+</Callout>
+
+| Plugs/site | kW/plug | Served% | Charger util%† | Fleet SOC% |
+|---|---|---|---|---|
+| **1** | **115.0** | **92.3%** | **80.2%** | **65.9%** |
+| 2 | 57.5 | 95.3% | 92.1% | 66.8% |
+| **4** | **28.8** | **96.1%** | **98.0%** | **63.5%** |
+| 7 | 16.5 | 96.1% | 99.6% | 63.8% |
+| 10 | 11.5 | 95.8% | 100.3% | 63.6% |
+| 20 | 5.8 | 95.2% | 101.6% | 64.8% |
+
+<p className="footnote">† Charger utilization = total scheduled session duration / total plug capacity over the simulation window. Sessions that begin near the end of the 3-day run extend beyond it; their full planned duration is counted in the numerator, which pushes the metric above 100% for slow-charger configs. It's a measurement artifact — served% is unaffected.</p>
+
+At 1 plug per site, charger utilization is only 80% — plugs aren't even
+saturated, but vehicles are still losing time to contention. The charging
+policy is JIT (just-in-time): when a vehicle arrives and the single plug is
+occupied, it bounces back to idle and re-plans from scratch — re-routing to
+another depot or cycling back to try again later. That re-plan burns fleet
+minutes and disrupts dispatch availability. Served% takes a nearly 4-point hit
+purely from this slot contention, not from a lack of total energy capacity.
+
+From 2 to 4 plugs, served% jumps from 95.3% to 96.1% as contention events
+drop and more vehicles can charge simultaneously. Charger utilization climbs
+to 98%. Notably, fleet average SOC doesn't rise with more plugs — at 1–2
+plugs (fast chargers) fleet SOC is actually slightly higher (66–67%) because
+each session delivers a larger individual top-up. The improvement from more
+plugs isn't faster charging per vehicle — the 115 kW charger already tops up
+quickly. The cost of a single plug is the wasted deadhead: a vehicle detects
+low SOC, travels several minutes to the nearest depot, arrives, gets bounced
+by JIT because the plug is occupied, and must re-plan. Those travel minutes
+are completely lost — the vehicle neither charged nor served a trip. With 4
+plugs, a vehicle making the same trip almost always finds a slot immediately,
+so every depot trip is productive. More plugs also make opportunistic top-ups
+viable: a vehicle running slightly low near a depot can stop reliably rather
+than gambling on plug availability.
+
+Going from 4 to 7 plugs produces almost no change: served% moves from
+96.14% to 96.05% — within noise — while charger utilization ticks up from
+98% to 99.6%. The 4-plug configuration already eliminated contention; the
+7-plug result confirms it. Once slot contention is gone, the remaining
+unserved trips are ones where no vehicle is close enough to respond within
+the wait timeout — a depot placement and coverage problem that more plugs
+don't touch.
+
+Beyond 7 plugs the curve turns down: at 20 plugs, utilization is 101.6%
+but served% has slipped to 95.2%. Slow chargers (5.75 kW) keep vehicles
+tethered slightly longer per session, which competes with dispatch at the
+margin.
+
+The practical implication is a procurement one: at the same total installed
+power budget, more L2 posts outperform fewer DC fast chargers. The sweet spot
+is **4 to 7 plugs per site at whatever kW fits the site's grid connection**.
+
+One caveat: charger tier and vehicle efficiency are coupled. A low-consumption
+fleet (0.20 kWh/mi) can run on 11.5 kW L2 chargers because a dense plug
+network replenishes energy faster than the fleet draws it. A high-consumption
+fleet (0.30 kWh/mi) cannot — the same dispersed 11.5 kW setup drops from ~96%
+to ~81% served. This isn't a battery-size problem: a higher-consumption vehicle
+drains faster between charges regardless of pack size, so a larger battery
+doesn't rescue a mismatched charger spec. The plug count recommendation above
+is specific to 0.20 kWh/mi — a less efficient fleet needs a recalibration of
+the charger tier first.
+
+| Config (N=77, 10 plugs, fleet=4,500) | 0.20 kWh/mi | 0.30 kWh/mi |
+|---|---|---|
+| 11.5 kW L2 | 95.8% | **80.8%** |
+| 20.0 kW | 95.5% | 95.3% |
+
+## 4. How small can the battery get?
+
+Battery procurement is coupled to the depot placement decision. I tested battery
+capacities from 75 kWh down to 15 kWh for both the distributed depot network
+(N=77) and the centralized network (N=2), with fleet and charger configs held
+constant.
+
+<BatteryFloorChart client:only="react" height={340} />
+
+<Callout tone="takeaway">
+  **For the distributed network (77 depots), served% holds at ~95% down to 40 kWh,
+  then drops ~2 points per step below that. For the centralized network (2
+  mega-depots), served% is completely flat at 93.9% regardless of battery size —
+  from 75 kWh all the way down to 15 kWh.**
+</Callout>
+
+The two networks tell different stories about why battery size does or doesn't matter.
+
+**Distributed network (N=77):** vehicles are always close to a plug, so a smaller
+battery just means more frequent short charging stops. Sessions per vehicle per
+day rise from 11.4 at 75 kWh to 14.7 at 15 kWh — a 29% increase in charging
+interruptions. At 40 kWh the extra frequency is manageable: served% stays at 95.2%,
+within a rounding error of the 75 kWh baseline (95.8%). Below 30 kWh, charging
+interruptions start competing directly with dispatch — vehicles need to divert
+for charging at exactly the moments they would otherwise pick up a rider. Served%
+slides to 93.6% at 30 kWh and 89.5% at 15 kWh.
+
+**Centralized network (N=2):** battery size is completely irrelevant. Across
+all five battery sizes tested, served% holds at 93.9% and charging sessions
+average **~7.87 per vehicle per day** — nearly identical regardless of pack
+size. Under JIT charging, vehicles only head to a depot when their
+state-of-charge falls below a trigger threshold — they don't stop
+opportunistically when passing by. With only 2 depot locations, that triggered
+trip is long enough that the cost of making it sets the charging cadence, not
+the size of the battery. A smaller pack drains to the trigger sooner, but the
+vehicle still has to make the same expensive depot trip — and the fleet's
+dispatch cycle shapes when that trip fits. The depot geography imposes the
+charging rhythm; battery size can't override it.
+
+Both effects are grounded in the same energy accounting. At 0.20 kWh/mi,
+vehicles in the distributed network consume about **~58 kWh per vehicle per
+day (~290 miles of driving)**, and vehicles in the centralized network consume
+about **51.8 kWh (~259 miles)**. These per-vehicle daily energy figures hold
+within ±0.5 kWh regardless of battery pack size — because daily energy
+consumption is determined by how far each vehicle drives (trip miles plus
+deadhead), and that doesn't change with battery chemistry. What battery capacity
+changes is how many charging stops it takes to cover that same daily distance.
+
+The practical implication cuts both ways. In the **centralized network (N=2)**,
+you can procure vehicles with 15 kWh batteries and take no served% penalty at all —
+but only because the depot geometry is already the binding constraint. You're
+not gaining flexibility; you're operating below the level where battery matters.
+In the **distributed network (N=77)**, battery capacity does affect service
+quality, but there's a well-defined floor: 40 kWh holds served% within 1 point of
+the 75 kWh baseline. Going below 30 kWh starts costing real service quality.
+In both cases, smaller batteries are viable — the reason and the risk are just
+different. With 77 dispersed depots, reducing pack size from 75 kWh to 40 kWh
+saves ~$3,500 per vehicle with less than 1 point of service impact. The same
+capital could fund roughly 600 additional vehicles and recover most of that gap
+— making a smaller battery + larger fleet a roughly cost-neutral alternative to
+a larger battery + smaller fleet. In a sparse depot network — where recharging trips are expensive — that logic
+inverts: a larger battery earns its cost by keeping vehicles on the road longer
+between depot visits.
+
+## What I'd build next
+
+**A real congestion model.** All four findings assume free-flow OSRM routing.
+Real congestion is probably the variable these results are most sensitive to,
+and the one the simulator doesn't yet model. Even the naive version — a uniform
+travel-time multiplier — shows how large that gap is:
+
+<CongestionCapacityTax client:only="react" height={320} />
+
+<Callout tone="takeaway">
+  Every 50% rise in ambient travel time costs roughly 10 percentage points of
+  served demand at a fixed fleet — a _capacity tax_ that no amount of dispatcher
+  cleverness escapes. It's pure arithmetic: cars that spend more time in transit
+  are cars that aren't picking up new riders.
+</Callout>
+
+The absolute numbers — fleet knee location, p90 wait, per-trip cost — would
+all shift under realistic peak-hour slowdowns. The directional findings should
+hold, but the magnitudes are optimistic.
+
+**A policy sweep.** The findings here are almost entirely about infrastructure.
+What they don't answer is how much dispatcher variants, repositioning policies,
+and charging trigger thresholds matter in comparison — and whether any of those
+knobs produces a statistically meaningful difference once infrastructure is
+right, or whether it's all second-order.
+
+**Grid-aware depot placement.** The current optimizer picks sites by demand
+geography alone. Layering in grid capacity constraints — ERCOT interconnection
+data, available draw at candidate sites — would let it jointly optimize for
+demand proximity and infrastructure feasibility. The N=2 result hints at why
+this matters: centralized high-power sites may be infeasible to permit where
+the demand is densest.
+
+The simulator code and curated experiment notes are available on
+[GitHub](https://github.com/glaniewski/robotaxi-sim). Reach out via the contact
+page if you want to discuss the methodology.

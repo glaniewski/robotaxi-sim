@@ -1,0 +1,86 @@
+---
+import Base from "../layouts/Base.astro";
+---
+
+<Base title="Gabriel Laniewski" description="Software engineer building real-world mobility systems.">
+  <main class="mx-auto max-w-2xl px-6 py-20 md:py-28">
+    <header class="mb-16">
+      <h1 class="text-3xl md:text-[2.25rem] font-bold tracking-tight text-[color:var(--color-ink)] leading-tight">
+        Gabriel Laniewski
+      </h1>
+      <p class="mt-4 text-base md:text-[1.05rem] leading-relaxed text-[color:var(--color-ink-soft)]">
+        I build real-world mobility systems designed to operate today and evolve toward autonomy.
+        Currently the founding engineer at HandyRides — a mobility platform serving under-resourced
+        communities, with a long-term goal of driverless transportation. Previously at Epic Systems.
+        Based in Chicago.
+      </p>
+      <p class="mt-3 text-base md:text-[1.05rem] leading-relaxed text-[color:var(--color-ink-soft)]">
+        I'm particularly drawn to problems where simulation and real-world operation inform each other,
+        and to using AI to rapidly explore ideas and tradeoffs that would otherwise take weeks to test by hand.
+      </p>
+    </header>
+
+    <section class="mb-16">
+      <h2 class="mb-5 text-xs font-semibold uppercase tracking-[0.14em] text-[color:var(--color-muted)]">
+        Projects
+      </h2>
+      <ul class="space-y-6">
+        <li class="group">
+          <a href="/robotaxi" class="block rounded-md border border-[color:var(--color-rule)] p-5 transition hover:border-[color:var(--color-ink)]">
+            <div class="flex items-baseline justify-between gap-6">
+              <h3 class="text-lg font-semibold text-[color:var(--color-ink)] group-hover:underline">
+                Robotaxi simulator, Austin
+              </h3>
+              <span class="shrink-0 text-xs text-[color:var(--color-muted)] font-mono">Apr 2026</span>
+            </div>
+            <p class="mt-2 text-[0.97rem] leading-relaxed text-[color:var(--color-ink-soft)]">
+              Discrete-event sim for a full-city AV ride-hail service over real Austin demand data.
+              I wanted to understand the tradeoffs between service quality, fleet size, and charging
+              network design — and to document what the sim actually revealed.
+            </p>
+            <p class="mt-3 text-sm text-[color:var(--color-accent)]">
+              Read the post &rarr;
+            </p>
+          </a>
+        </li>
+
+        <li>
+          <div class="rounded-md border border-dashed border-[color:var(--color-rule)] p-5">
+            <div class="flex items-baseline justify-between gap-6">
+              <h3 class="text-lg font-semibold text-[color:var(--color-muted)]">
+                AI agent for autonomous sim experimentation
+              </h3>
+              <span class="shrink-0 text-xs text-[color:var(--color-muted)] font-mono">in progress</span>
+            </div>
+            <p class="mt-2 text-[0.97rem] leading-relaxed text-[color:var(--color-muted)]">
+              Setting up an AI agent that can run experiments on the robotaxi sim autonomously —
+              proposing configurations, interpreting results, and optimizing toward well-defined metrics.
+            </p>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <section class="mb-10">
+      <h2 class="mb-4 text-xs font-semibold uppercase tracking-[0.14em] text-[color:var(--color-muted)]">
+        Contact
+      </h2>
+      <ul class="space-y-1.5 text-[0.97rem] text-[color:var(--color-ink-soft)]">
+        <li>
+          <span class="font-mono text-sm text-[color:var(--color-muted)]">email</span>
+          {" "}&nbsp;
+          <a class="text-[color:var(--color-accent)] underline" href="mailto:laniewskigabriel@gmail.com">
+            laniewskigabriel@gmail.com
+          </a>
+        </li>
+        <li>
+          <span class="font-mono text-sm text-[color:var(--color-muted)]">linkedin</span>
+          {" "}&nbsp;
+          <a class="text-[color:var(--color-accent)] underline" href="https://www.linkedin.com/in/gabriel-laniewski" target="_blank" rel="noopener noreferrer">
+            linkedin.com/in/gabriel-laniewski
+          </a>
+        </li>
+      </ul>
+    </section>
+  </main>
+</Base>

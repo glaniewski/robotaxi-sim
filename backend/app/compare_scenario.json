@@ -1,0 +1,18 @@
+{
+  "seed": 123,
+  "baseline": {
+    "use_default": true,
+    "overrides": {
+      "dispatch": { "strategy": "nearest" }
+    }
+  },
+  "variant": {
+    "use_default": true,
+    "overrides": {
+      "dispatch": {
+        "strategy": "first_feasible",
+        "first_feasible_threshold_seconds": 300
+      }
+    }
+  }
+}

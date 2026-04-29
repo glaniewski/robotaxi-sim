@@ -1,0 +1,68 @@
+---
+import Base from "./Base.astro";
+
+interface Props {
+  title?: string;
+  subtitle?: string;
+  date?: string;
+  author?: string;
+  readingTimeMinutes?: number;
+  description?: string;
+  frontmatter?: {
+    title?: string;
+    subtitle?: string;
+    date?: string;
+    author?: string;
+    readingTimeMinutes?: number;
+    description?: string;
+  };
+}
+
+// MDX layouts receive frontmatter nested under props.frontmatter in Astro 5
+const fm = Astro.props.frontmatter ?? Astro.props;
+const { title, subtitle, date, author, readingTimeMinutes, description } = fm;
+---
+
+<Base title={title} description={description ?? subtitle}>
+  <main class="mx-auto max-w-2xl px-6 py-16 md:py-20">
+    <nav class="mb-10 text-sm">
+      <a
+        href="/"
+        class="text-[color:var(--color-muted)] hover:text-[color:var(--color-ink)]"
+      >
+        &larr; back to home
+      </a>
+    </nav>
+
+    <header class="mb-10">
+      <h1 class="text-4xl md:text-5xl font-bold tracking-tight leading-[1.05]">
+        {title}
+      </h1>
+      {subtitle ? (
+        <p class="mt-4 text-lg md:text-xl text-[color:var(--color-ink-soft)] leading-snug">
+          {subtitle}
+        </p>
+      ) : null}
+      <div class="mt-5 flex items-center gap-3 text-sm text-[color:var(--color-muted)]">
+        {author ? <span>{author}</span> : null}
+        {author && date ? <span>·</span> : null}
+        {date ? <span>{date}</span> : null}
+        {(date || author) && readingTimeMinutes ? <span>·</span> : null}
+        {readingTimeMinutes ? <span>{readingTimeMinutes} min read</span> : null}
+      </div>
+    </header>
+
+    <article class="prose-post">
+      <slot />
+    </article>
+
+    <footer class="mt-24 pt-8 border-t border-[color:var(--color-rule)] text-sm text-[color:var(--color-muted)]">
+      <p>
+        Built with a simulator I wrote — see the
+        {" "}
+        <a href="https://github.com/" class="underline">repository</a>{" "}
+        for the code, datasets, and full experiment log.
+      </p>
+    </footer>
+  </main>
+</Base>

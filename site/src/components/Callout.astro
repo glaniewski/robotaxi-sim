@@ -1,0 +1,28 @@
+---
+interface Props {
+  label?: string;
+  tone?: "note" | "takeaway" | "caveat";
+}
+const { label, tone = "note" } = Astro.props;
+
+const toneStyles: Record<string, string> = {
+  note: "border-l-[color:var(--color-accent)] bg-blue-50/60",
+  takeaway: "border-l-emerald-500 bg-emerald-50/60",
+  caveat: "border-l-amber-500 bg-amber-50/60",
+};
+
+const labelMap: Record<string, string> = {
+  note: label ?? "Note",
+  takeaway: label ?? "Takeaway",
+  caveat: label ?? "Caveat",
+};
+---
+
+<aside
+  class={`my-6 rounded-md border-l-4 ${toneStyles[tone]} px-4 py-3 text-[0.97rem] leading-relaxed text-[color:var(--color-ink-soft)]`}
+>
+  <div class="mb-1 text-xs font-semibold uppercase tracking-wide text-[color:var(--color-ink)]">
+    {labelMap[tone]}
+  </div>
+  <slot />
+</aside>
